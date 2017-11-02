@@ -1,0 +1,37 @@
+*{
+	margin: auto;
+	/* padding: auto; */
+}
+body{
+	background-color: #b3ffe6;
+	margin-left: 5%;
+}
+div{
+	margin-top: 3%;
+	width: 25%;
+	overflow: hiden;
+	display: inline-block;
+}
+div.right{
+	float: right;
+	width: 30%;
+}
+div.left{
+	float: left;
+	width: 30%;
+}
+div.center{
+	margin-left: auto;
+	width: 30%;
+}
+input#submit{
+	width: 10%;
+	font-size: 20px;
+	background-color: #00ff00;
+	float:right;
+	position: absolute;
+	bottom: auto;
+}
+span{
+	color: red;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Práctica 20</title>
+        <meta charset="UTF-8">
+	</head>
+	<body>
+		<form name="formulario" action="tratamiento.php" method="post">
+			<legend>
+				<h1>Formulario de Registro:</h1>
+			</legend>
+			<h2>Datos personales:</h2>
+			 <label for="cortesia">Sexo</label>
+			<div>
+				<!-- Datos introducidos marcando la opción -->
+				<input type="radio" id="genero1" name="genero" value="Hombre">Sr.<br/> 
+				<input type="radio" id="genero2" name="genero" value="Mujer">Sra.<br/> 
+				<input type="radio" id="genero3" name="genero" value="Otro">Otro.<br/> 
+			</div>	
+			</br></br> 
+			<label for="nombre">Nombre</label>
+			<input type="text" id="nombre" name="nombre" placeholder="Nombre"/>
+			<!-- Dato introducido de tipo texto -->
+			</br></br>
+			<label for="apellidos">Primer Apellido</label> 
+			<input type="text" id="apellido1" name="apellido1" placeholder="Primer Apellido"/> 
+			<!-- Dato introducido de tipo texto -->
+			</br></br> 
+			<label for="apellidos">Segundo Apellido</label>
+			<input type="text" id="apellido2" name="apellido2" placeholder="Segundo Apellido"/> 
+			<!-- Dato introducido de tipo texto -->
+			</br></br> 
+			<label for="nacimiento">Fecha de Nacimiento</label>
+			<input type="date" id="nacimiento" name="nacimiento"/>
+			<!-- Dato introducido de tipo fecha, por lo que nos aparecerá un calendario a la hora de rellenar el campo -->
+			</br></br>
+			<select name="provincia">
+				<option value="Provincia">Provincia</option>
+				<option value="Ávila">Ávila</option>
+				<option value="Burgos">Burgos</option>
+				<option value="León">León</option>
+				<option value="Palencia">Palencia</option>
+				<option value="Salamanca">Salamanca</option>
+				<option value="Segovia">Segovia</option>
+				<option value="Soria">Soria</option>
+				<option value="Valladolid">Valladolid</option>
+				<option value="Zamora">Zamora</option>	
+				<!-- Lista desplegable en la que tomaremos el valor del campo seleccionado -->
+			</select>
+			</br></br>
+			<label for="email">Número de hermanos</label>
+			<input type="number" id="hermanos" name="hermanos" min="0" placeholder="0"/> 
+			<!-- Campo de tipo numérico en que tendremos flechas para seleccionar la cantidad deseada -->
+			<!-- Dado que el campo no puede contener un valor negativo se le pone el mínimo de 0 -->
+			</br></br> 
+			<label for="altura">Altura</label>
+			<input type="range" name="altura" min="0" max="299" step="1" value="150">
+			<!-- Dato que se introduce a través de una barra -->
+			</br></br> 
+			<label for="email">Correo electronico</label>
+			<input type="email" id="email" name="email" placeholder="direccion@correo.com"/> 
+			<!-- Campo de tipo email dado que lo que va a recibir el campo es de tipo email -->
+			</br></br> 
+			<label for="email">Contraseña</label>
+			<input type="password" id="contraseña" name="contraseña" placeholder="contraseña"/> 
+			<!-- Dado que el campo es una contraseña, se diseña de tipo password, para que protega los datos -->
+			</br></br> 
+			<label for="telefono">Número de teléfono</label> 
+			<input type="tel" id="telefono" name="telefono"/> 
+			<!-- Campo de tipo tel ya que va a introducir un dato que es un número de teléfono -->
+			</br></br>
+			<label for="telefono">Buzón de sugerencias</label> </br>
+			<textarea name="sugerencias" rows="15" cols="100" placeholder="Introduzca aquí sus sugerencias"></textarea>
+			<!-- Campo que va a contener todo el texto que el usuario introduzca en el mismo -->
+			</br></br>
+			<input type="submit" value="Enviar">
+			<!-- Boton que va a realizar el envio del formulario -->
+		</form>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+*{
+	margin: 0, auto;
+	padding: 0, auto;
+}
+header{
+	background-color: #ff0040;
+	text-align: center;
+}
+footer{
+	background-color: #ff0080;
+	text-align: right;
+	font-size: 20px;
+}
+#pie{
+	margin-right: 5%;
+}
+div{
+	border-style: solid;
+	border-color: #ff0040;
+	border-width: 5px;
+}
+div>*{
+	margin-left: 5%;
+}
+a, div{
+	margin-left: 5%;
+	width: 90%;
+}
+#menu{
+	text-align: left;
+	
+}
+
+footer>a{
+	margin-right: 5%;
+}
+table{
+	width: 100%;
+	height: 100%;
+}

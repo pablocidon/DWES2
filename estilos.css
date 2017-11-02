@@ -1,0 +1,44 @@
+*{
+    margin: auto;
+    padding: auto;
+}
+body{
+    margin-top: 0;
+}
+img{
+    width: 90%;
+    margin: 5%;
+}
+header{
+    background-color: #00bfff;
+    font-size: 30px;
+    text-align: center;
+}
+footer{
+    background-color: #00bfff;
+    text-align: right;
+    font-size: 20px;
+    margin-top: 5%;
+}
+footer>p{
+    margin-right: 5%;
+}
+header>h1{
+    margin: 5%;
+}
+a{
+    margin: 2%;
+    line-height: 180%;
+    text-decoration: none;
+}
+body>a:hover{
+    background-color: #00ffff;
+}
+footer>a{
+    width: 5%;
+    float: left;
+    margin: auto;
+    /*display: inline-block;*/
+    margin-left: 5%;
+}
+
