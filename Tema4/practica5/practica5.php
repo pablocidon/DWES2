@@ -8,7 +8,8 @@
     <body>
     <?php
         try{
-            $miDB = new PDO('mysql:host=localhost;dbname=DAW211_DBdepartamentos', 'DAW211', 'paso');
+            include "../../confUsuarios.php";
+            $miDB = new PDO(DATOSCONEXION, USER, PASSWORD);
             $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $miDB->beginTransaction();
             $consulta1 = $miDB->exec("INSERT INTO Departamento (CodDepartamento,DescDepartamento) VALUES ('COM','Comercial')");

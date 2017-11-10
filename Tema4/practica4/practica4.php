@@ -9,6 +9,7 @@
     <?php
     //Llamada a la libreria de validación y declaración de variables.
     require "LibreriaValidacion.php";
+    include "../../confUsuarios.php";
     $entradaOK = true;
     $valido = 0;
     $correcto = true;
@@ -57,7 +58,7 @@
         } else {
             //Si todo a salido correctamente realizamos la conexion con la base de datos.
             try{
-                $miDB = new PDO('mysql:host=192.168.20.19;dbname=DAW211_DBdepartamentos', 'DAW211', 'paso');//Establecemos la conexión.
+                $miDB = new PDO(DATOSCONEXION, USER, PASSWORD);//Establecemos la conexión.
                 $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//Llamamos a las excepciones
                 $consulta = $miDB->prepare("SELECT * from Departamento WHERE DescDepartamento LIKE concat('%',:busqueda,'%')");
                 $consulta->bindParam(':busqueda',$descripcion);
