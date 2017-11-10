@@ -7,7 +7,7 @@
     </head>
     <body>
     <?php
-    include "../../confUsuarios.php";
+    include "../confUsuarios.php";
     try {
         $miDB = new PDO(DATOSCONEXION, USER, PASSWORD);
         foreach ($miDB->query("SELECT * FROM Departamento") as $registro){

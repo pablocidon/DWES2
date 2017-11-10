@@ -7,7 +7,7 @@
     </head>
     <body>
     <?php
-    include "../../confUsuarios.php";
+    include "../confUsuarios.php";
     try {
         $conexion = new PDO(DATOSCONEXION, USER, PASSWORD);
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

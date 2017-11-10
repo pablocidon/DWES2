@@ -9,7 +9,7 @@
 <?php
 //Llamada a la libreria de validación y declaración de variables.
 require "LibreriaValidacion.php";
-include "../../confUsuarios.php";
+include "../confUsuarios.php";
 //Variables superglobales.
 define("MIN",1);
 define("MAX",3);

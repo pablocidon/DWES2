@@ -8,7 +8,7 @@
     <body>
     <?php
         try{
-            include "../../confUsuarios.php";
+            include "../confUsuarios.php";
             $miDB = new PDO(DATOSCONEXION, USER, PASSWORD);
             $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $miDB->beginTransaction();
