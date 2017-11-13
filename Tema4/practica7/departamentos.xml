@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <Departamentos>
     <Departamento>
-        <CodDepartamento>MAT</CodDepartamento>
-        <DescDepartamento>Matematicas</DescDepartamento>
+        <CodDepartamento>LOG</CodDepartamento>
+        <DescDepartamento>Loguistica</DescDepartamento>
     </Departamento>
     <Departamento>
-        <CodDepartamento>PLA</CodDepartamento>
-        <DescDepartamento>Plastica</DescDepartamento>
+        <CodDepartamento>DIR</CodDepartamento>
+        <DescDepartamento>Direccion</DescDepartamento>
     </Departamento>
 </Departamentos>
