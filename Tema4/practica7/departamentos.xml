@@ -5,7 +5,7 @@
         <DescDepartamento>Loguistica</DescDepartamento>
     </Departamento>
     <Departamento>
-        <CodDepartamento>DIR</CodDepartamento>
-        <DescDepartamento>Direccion</DescDepartamento>
+        <CodDepartamento>ADV</CodDepartamento>
+        <DescDepartamento>Audiovisual</DescDepartamento>
     </Departamento>
 </Departamentos>
