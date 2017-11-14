@@ -1,0 +1,29 @@
+img{
+    width: 20%;
+}
+nav{
+    background-color: gray;
+}
+button.abierto{
+    background-color: black;
+    color: white;
+}
+button{
+    height: 100%;
+    margin-left: 1%;
+}
+form{
+    margin-left: 30%;
+}
+body>h1{
+    text-align: center;
+}
+footer{
+    background-color: gray;
+    text-align: right;
+    color: white;
+}
+footer>p{
+    margin-right: 5%;
+    font-size: 20px;
+}
