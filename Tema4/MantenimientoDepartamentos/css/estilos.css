@@ -1,6 +1,9 @@
 img{
     width: 20%;
 }
+header{
+    background-color: gray;
+}
 nav{
     background-color: gray;
 }
@@ -23,7 +26,15 @@ footer{
     text-align: right;
     color: white;
 }
-footer>p{
+footer>*{
     margin-right: 5%;
     font-size: 20px;
+}
+div{
+    border-style: solid;
+    border-color: gray;
+    border-width: 5px;
+}
+div>*{
+    margin-left: 5%;
 }

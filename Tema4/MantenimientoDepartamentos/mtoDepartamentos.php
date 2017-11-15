@@ -3,13 +3,13 @@
 <head>
     <title>Mantenimiento Departamentos</title>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../../../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
 </head>
 <body>
 <?php
 //Llamada a la libreria de validación y declaración de variables.
-require "Librerias/LibreriaValidacion.php";
+include "Librerias/LibreriaValidacion.php";
 include "Librerias/confUsuarios.php";
 $entradaOK = true;
 $valido = 0;
@@ -25,7 +25,7 @@ $mensajeError = array(
     "<strong>Tamaño maximo no valido</strong><br />"
 );
 //Realizamos la validación de los datos introducidos
-if (filter_has_var(INPUT_POST, 'buscar')) {
+/*if (filter_has_var(INPUT_POST, 'buscar')) {
     //Función de validación.
     $valido = validarCadenaAlfabetica($_POST['descripcion']);
     //Si hay algún error nos mostrará el mensaje.
@@ -36,19 +36,18 @@ if (filter_has_var(INPUT_POST, 'buscar')) {
     } else {
         $descripcion = $_POST['descripcion'];
     }
-}
+}*/
 //Si no hemos pulsado el botón o hay algo que no sea correcto nos muestra el formulario
 //Si hay algún error solamente se borrarán aquellos campos que tengan error.
-if (!isset($_POST['buscar']) || !$correcto) {
+if (!isset($_POST['buscar']) /*|| !$correcto*/) {
     ?>
-    <h1>MANTENIMIENTO DE DEPARTAMENTOS</h1>
     <nav>
         <a href="mtoDepartamentos.php"><button type="button" class="abierto"><img src="images/inicio.png" alt="inicio">Inicio</button></a>
-        <a href="altaDepartamento.php"><button type="button"><img src="images/nuevo.png" alt="nuevo">Nuevo</button></a>
-        <a href="modificacionDepartamento.php"><button type="button"><img src="images/editar.png" alt="editar">Editar</button></a>
-        <a href="borradoDepartamento.php"><button type="button"><img src="images/borrar.png" alt="borrar">Borrar</button></a>
-        <a href="importaDepartamento.php"><button type="button"><img src="images/importar.png" alt="importar">Importar</button></a>
-        <a href="exportaDepartamento.php"><button type="button"><img src="images/exportar.png" alt="exportar">Exportar</button></a>
+        <a href="altaDepartamento.php"><button type="button" disabled><img src="images/nuevo.png" alt="nuevo">Nuevo</button></a>
+        <a href="modificacionDepartamento.php"><button type="button" disabled><img src="images/editar.png" alt="editar">Editar</button></a>
+        <a href="borradoDepartamento.php"><button type="button" disabled><img src="images/borrar.png" alt="borrar">Borrar</button></a>
+        <a href="importaDepartamento.php"><button type="button" disabled><img src="images/importar.png" alt="importar">Importar</button></a>
+        <a href="exportaDepartamento.php"><button type="button" disabled><img src="images/exportar.png" alt="exportar">Exportar</button></a>
         <a href="../index.html"><button type="button"><img src="images/salir.png" alt="exportar">Salir</button></a>
     </nav>
     <form name="input" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -74,13 +73,26 @@ if (!isset($_POST['buscar']) || !$correcto) {
         $consulta = $miDB->prepare("SELECT * from Departamento WHERE DescDepartamento LIKE concat('%',:busqueda,'%')");
         $consulta->bindParam(':busqueda',$descripcion);
         $consulta->execute();
-        while($departamento = $consulta->fetch(PDO::FETCH_OBJ)){
-            echo "<tr>";
-            echo "<td>".$departamento->CodDepartamento."</td>"."<br />";
-            echo "<td>".$departamento->DescDepartamento."</td>"."<br />";
-            echo "<td>".$departamento->FechaBaja."</td>"."<br />";
-            echo "</tr>";
-        }
+        ?>
+        <table>
+            <tbody>
+            <tr>
+                <th>Codigo</th>
+                <th>Descripción</th>
+                <th>Fecha</th>
+            </tr>
+            <?php
+            while($departamento = $consulta->fetch(PDO::FETCH_OBJ)){
+                echo "<tr>";
+                echo "<td>".$departamento->CodDepartamento."</td>";
+                echo "<td>".$departamento->DescDepartamento."</td>";
+                echo "<td>".$departamento->FechaBaja."</td>"."<br>";
+                echo "</tr>";
+            }
+            ?>
+            </tbody>
+        </table>
+        <?php
         if($consulta->rowCount()==0){
             echo "No se han encontrado resultados";
         }
