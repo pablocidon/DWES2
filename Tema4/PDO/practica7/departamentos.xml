@@ -2,10 +2,10 @@
 <Departamentos>
     <Departamento>
         <CodDepartamento>LOG</CodDepartamento>
-        <DescDepartamento>Loguistica</DescDepartamento>
+        <DescDepartamento>Logistica</DescDepartamento>
     </Departamento>
     <Departamento>
-        <CodDepartamento>ADV</CodDepartamento>
-        <DescDepartamento>Audiovisual</DescDepartamento>
+        <CodDepartamento>DIR</CodDepartamento>
+        <DescDepartamento>Direccion</DescDepartamento>
     </Departamento>
 </Departamentos>

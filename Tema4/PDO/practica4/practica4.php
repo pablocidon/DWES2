@@ -9,7 +9,7 @@
     <?php
     //Llamada a la libreria de validación y declaración de variables.
     require "LibreriaValidacion.php";
-    include "../confUsuarios.php";
+    include "../../confUsuarios.php";
     $entradaOK = true;
     $valido = 0;
     $correcto = true;
