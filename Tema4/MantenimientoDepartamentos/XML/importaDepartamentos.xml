@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Departamentos>
+    <Departamento>
+        <CodDepartamento>LOG</CodDepartamento>
+        <DescDepartamento>Logistica</DescDepartamento>
+    </Departamento>
+    <Departamento>
+        <CodDepartamento>DIR</CodDepartamento>
+        <DescDepartamento>Direccion</DescDepartamento>
+    </Departamento>
+</Departamentos>
