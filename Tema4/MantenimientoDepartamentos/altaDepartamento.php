@@ -42,38 +42,40 @@ if(isset($_POST['Cancelar'])){
 try {
     $miDB = new PDO(DATOSCONEXION, USER, PASSWORD);//la conexión.
     $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//Llamamos a las excepciones
-    if (isset($_GET['CodDepartamento'])) {//Comprobamos que el registro que vamos a crear existe
-        $codigo = $_GET['CodDepartamento'];
-        $consulta=$miDB->prepare("SELECT CodDepartamento, DescDepartamento FROM Departamento WHERE CodDepartamento=:cod_departamento");
-        $consulta->bindParam(":cod_departamento",$codigo);
-        $consulta->execute();
-        if($consulta->rowCount()==1){
-            $datos=$consulta->fetch(PDO::FETCH_OBJ);
+    if(filter_has_var(INPUT_POST,'Aceptar')){
+        $errores['codigo']=comprobarTexto($_POST['codigo'],3,3,1);
+        $errores['descripcion']=comprobarTexto($_POST['descripcion'],255,0,1);
+        foreach($errores as $valor){  //recorremos el array de errores
+            if($valor!=null){
+                $entradaOK=false;
+            }
         }
     }
-    ?>
-    <form name="input" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
-        <legend>
-            <h2>Nuevo Registro:</h2>
-        </legend>
-        <label for="codigo">Código</label>
-        <input type="text" name="codigo" <?php if (isset($_POST['codigo']) && empty($errores['codigo'])) {
-            echo 'value="', $_POST['codigo'], '"';
-        } ?> >
-        <?php echo $errores['codigo']; ?>
-        <br><br>
-        <label for="descripcion">Descripcion</label>
-        <input type="text"
-               name="descripcion" <?php if (isset($_POST['descripcion']) && empty($errores['descripcion'])) {
-            echo 'value="', $_POST['descripcion'], '"';
-        } ?> >
-        <?php echo $errores['descripcion']; ?>
-        <br><br>
-        <input id="aceptar" type="submit" value="Aceptar" name="Aceptar"/>
-        <input id="cancelar" type="submit" value="Cancelar" name="Cancelar"/>
-    </form>
-    <?php
-    if(isset($_POST['Aceptar'])) { //comprobamos si se ha pulsado aceptar
+
+    if(!filter_has_var(INPUT_POST,'Aceptar')||$entradaOK=false) {
+        ?>
+        <form name="input" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <legend>
+                <h2>Nuevo Registro:</h2>
+            </legend>
+            <label for="codigo">Código</label>
+            <input type="text" name="codigo" <?php if (isset($_POST['codigo']) && empty($errores['codigo'])) {
+                echo 'value="', $_POST['codigo'], '"';
+            } ?> >
+            <?php echo $errores['codigo']; ?>
+            <br><br>
+            <label for="descripcion">Descripcion</label>
+            <input type="text"
+                   name="descripcion" <?php if (isset($_POST['descripcion']) && empty($errores['descripcion'])) {
+                echo 'value="', $_POST['descripcion'], '"';
+            } ?> >
+            <?php echo $errores['descripcion']; ?>
+            <br><br>
+            <input id="aceptar" type="submit" value="Aceptar" name="Aceptar"/>
+            <input id="cancelar" type="submit" value="Cancelar" name="Cancelar"/>
+        </form>
+        <?php
+    }else{ //Si todo ha salido bien
         $consulta = ("INSERT INTO Departamento (CodDepartamento,DescDepartamento) VALUES (\"" . $_POST['codigo'] . "\",\"" . $_POST['descripcion'] . "\")");//Ejecutamos la consulta
         $registros = $miDB->exec($consulta);//Devuelve 1 si se ha creado el registro y 0 si no se ha creado.
         if ($registros == 1) {//Si se encuentra un registro, mostramos si se ha creado o no
