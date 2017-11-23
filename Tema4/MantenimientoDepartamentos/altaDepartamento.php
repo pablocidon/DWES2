@@ -43,7 +43,13 @@ try {
     $miDB = new PDO(DATOSCONEXION, USER, PASSWORD);//la conexión.
     $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//Llamamos a las excepciones
     if(filter_has_var(INPUT_POST,'Aceptar')){
-        $errores['codigo']=comprobarTexto($_POST['codigo'],3,3,1);
+        if($errores['codigo']=comprobarTexto($_POST['codigo'],3,3,1)==null){
+            $comprobacion=$miDB->query("SELECT * FROM Departamento WHERE CodDepartamento = \"".$_POST['codigo']."\"");
+            $resultado=$comprobacion->fetchColumn(0);
+            if($resultado){
+                $errores['codigo']="El código ya existe";
+            }
+        }
         $errores['descripcion']=comprobarTexto($_POST['descripcion'],255,0,1);
         foreach($errores as $valor){  //recorremos el array de errores
             if($valor!=null){
