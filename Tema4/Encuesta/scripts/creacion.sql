@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS DAW211_DBEncuesta;
+USE DAW211_DBEncuesta;
+CREATE TABLE Campos(
+	DNI VARCHAR (9) PRIMARY KEY,
+	Nombre VARCHAR (20),
+	Apellidos VARCHAR (100),
+	FechaNacimiento DATE,
+	Satisfaccion INT ,
+	Valoracion VARCHAR(50),
+	Opinion VARCHAR(250)
+)ENGINE=InnoDB;
