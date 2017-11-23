@@ -48,6 +48,7 @@ try {
             $resultado=$comprobacion->fetchColumn(0);
             if($resultado){
                 $errores['codigo']="El código ya existe";
+                $entradaOK=false;
             }
         }
         $errores['descripcion']=comprobarTexto($_POST['descripcion'],255,0,1);
