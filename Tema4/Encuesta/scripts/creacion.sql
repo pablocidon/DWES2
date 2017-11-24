@@ -7,5 +7,6 @@ CREATE TABLE Campos(
 	FechaNacimiento DATE,
 	Satisfaccion INT ,
 	Valoracion VARCHAR(50),
-	Opinion VARCHAR(250)
+	Opinion VARCHAR(250),
+	IP VARCHAR(14)
 )ENGINE=InnoDB;
