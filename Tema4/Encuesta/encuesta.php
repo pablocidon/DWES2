@@ -8,7 +8,7 @@
     <!--Archivo: encuesta.php
         Autor: Pablo Cidón.
         Creado: 23/11/2017
-        Modificado: 25/11/2017 -->
+        Modificado: 27/11/2017 -->
 </head>
 <body>
 <?php
@@ -36,7 +36,7 @@ $errores=Array(
 try {
     $miDB = new PDO(DATOSCONEXION, USER, PASSWORD);//la conexión.
     $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//Llamamos a las excepciones
-    $ip = $_SERVER['SERVER_ADDR'];
+    $ip =  $_SERVER['REMOTE_ADDR'];
     if (isset($_POST['Cancelar'])) {
         header('Location:index.html');
     }
@@ -137,7 +137,7 @@ try {
     } else {
     ?>    <script>alert(<?php echo "No se ha podido realizar la encuesta.";?>)</script>
     <?php }
-        header('Location:mtoDepartamentos.php');//Volvemos a la página de inicio
+        header('Location:index.html');//Volvemos a la página de inicio
     }
 }catch (PDOException $e){
     echo $e->getMessage();//Si se produce un error muestra un mensaje
@@ -147,7 +147,7 @@ try {
 }
 ?>
 <footer>
-
+    <p id="pie">Pablo Cidon Curso 2017-2018</p>
 </footer>
 </body>
 </html>
