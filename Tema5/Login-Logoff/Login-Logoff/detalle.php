@@ -1,3 +1,12 @@
+<?php
+if(isset($_POST['detalle'])){
+    header("Location: programa.php");
+}
+if(isset($_POST['salir'])){
+    unset($_SESSION['usuario']);
+    header("Location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,15 +17,19 @@
 </head>
 <body>
 <nav>
-    <button><a href="programa.php">Ir a Detalle</a></button>
-    <input type="submit" name="salir" value="Cerrar Sesión" disabled>
-    <?php
-    if(isset($_POST['salir'])){
-        session_destroy();
-    }
-    ?>
+    <form action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <input type='submit' name='programa' value='Ir al Programa'/>
+        <input type="submit" name="salir" value="Cerrar Sesión">
+    </form>
 </nav>
+<h1>
+    Ventana de Detalle
+</h1>
 <?php
+session_start();
+if(isset($_SESSION['usuario'])){
+    echo "<strong>Bienvenido </strong>".$_SESSION['usuario'].'<br>';
+}
 if(isset($_COOKIE['ultimaConexion'])){//Si la cookie no ha expirado mostramos la fecha y hora de la última conexión
     echo "<strong>Última conexión: </strong>".$_COOKIE['ultimaConexion'].'<br>';
 }

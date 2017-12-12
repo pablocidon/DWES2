@@ -1,3 +1,36 @@
+<?php
+$error='';
+require "Librerias/conexionDB.php";
+require "Librerias/LibreriaValidacion.php";
+if(isset($_POST['cancelar'])){
+    header('Location:../index.html');
+}
+if(filter_has_var(INPUT_POST, 'aceptar')) {
+    $usuario = $_POST['usuario'];//Alamacenamos el usuario en una variable.
+    $password = hash('sha256', $_POST['password']); //Almacenamos la contraseña encriptandola.
+    try {
+        $miDB=new PDO(DATOSCONEXION, USER,PASSWORD);
+        $miDB->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $consulta = $miDB->prepare("SELECT CodUsuario,Password FROM Usuarios WHERE CodUsuario=:usuario AND Password=:password");
+        //Parámetros de la consulta
+        $consulta->bindParam(':usuario', $usuario);
+        $consulta->bindParam(':password', $password);
+        $consulta->execute();//Ejecutamos la consulta
+        if ($consulta->rowCount() == 1) {
+            session_start();
+            $_SESSION['usuario']=$usuario;
+            header("Location: programa.php");
+        }else {
+            $error = "Usuario o contraseña no válidos!";
+        }
+    } catch (PDOException $exception) {
+        echo $exception->getMessage();
+    }finally{
+        unset($miDB);
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,64 +43,18 @@
 <header>
     <h1>LOGIN-LOGOFF</h1>
 </header>
-<?php
-    $entrada=true;
-
-    require "Librerias/conexionDB.php";
-    require "Librerias/LibreriaValidacion.php";
-    if(isset($_POST['cancelar'])){
-        header('Location:../index.html');
-    }
- try {
-      $miDB=new PDO(DATOSCONEXION, USER,PASSWORD);
-      $miDB->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-      if(filter_has_var(INPUT_POST, 'aceptar')){
-             $usuario = $_POST['usuario'];//Alamacenamos el usuario en una variable.
-             $password = hash('sha256', $_POST['password']); //Almacenamos la contraseña encriptandola.
-             $consulta = $miDB->prepare("SELECT CodUsuario,Password FROM Usuarios WHERE CodUsuario=:usuario AND Password=:password");
-             //Parámetros de la consulta
-             $consulta->bindParam(':usuario', $usuario);
-             $consulta->bindParam(':password', $password);
-             $consulta->execute();//Ejecutamos la consulta
-             if ($consulta->rowCount() != 0) {
-                 session_start();
-                    $_SESSION['usuario']=$usuario;//Guardamos el usuario que ha accedido
-                    $_SESSION['password']=$password;//Guardamos la contraseña del usuario
-                 header('Location:programa.php');
-             }else{
-                 $entrada = false;
-                 ?>
-                 <script type="text/javascript">
-                     alert("Usuario o Contraseña incorrectos");
-                 </script>
-             <?php
-             session_destroy();
-             }
-        }
-
-     if (!filter_has_var(INPUT_POST, 'aceptar')|| $entrada=false) {
-         ?>
-         <form name="input" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
-             <label for="usuario">Usuario</label>
-             <input type="text" placeholder="Usuario" name="usuario">
-             <br><br>
-             <label for="password">Contraseña</label>
-             <input type="password" placeholder="Contraseña" name="password">
-             <br><br>
-             <input type="submit" value="Aceptar" name="aceptar">
-             <input type="submit" value="Cancelar" name="cancelar">
-         </form>
-         <?php
-     }else{
-         session_start();
-         header('Location:programa.php');
-     }
- }catch (PDOException $exception){
-    echo $exception->getMessage();
- }finally{
-    unset($miDB);
-    exit();
- }
-?>
+<form name="input" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <label for="usuario">Usuario</label>
+    <input type="text" placeholder="Usuario" name="usuario">
+    <br><br>
+    <label for="password">Contraseña</label>
+    <input type="password" placeholder="Contraseña" name="password">
+    <br><br>
+    <span class="error"><?php echo $error; ?></span>
+    <br><br>
+    <input type="submit" value="Aceptar" name="aceptar">
+    <input type="submit" value="Cancelar" name="cancelar">
+</form>
 </body>
 </html>
+
