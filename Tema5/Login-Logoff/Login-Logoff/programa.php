@@ -1,10 +1,10 @@
 <?php
 if(isset($_POST['detalle'])){
-    header("Location: detalle.php");
+    header("Location: detalle.php");//Vamos la página de detalle en caso de que se pulse el botón.
 }
-if(isset($_POST['salir'])){
-    unset($_SESSION['usuario']);
-    header("Location: login.php");
+if(isset($_POST['salir'])){//Si pulsamos el botón de salida
+    unset($_SESSION['usuario']);//Cerramos la sesión
+    header("Location: login.php");//Vamos a la página de login
 }
 ?>
 <!DOCTYPE html>
@@ -26,9 +26,9 @@ if(isset($_POST['salir'])){
     Ventana de Programa
 </h1>
 <?php
-session_start();
+session_start();//Cargamos la sesión que está creada.
 if(isset($_SESSION['usuario'])){
-    echo "<strong>Bienvenido </strong>".$_SESSION['usuario'].'<br>';
+    echo "<strong>Bienvenido </strong>".$_SESSION['usuario'].'<br>';//Mostramos un mensaje de bienvenida para el usuario
 }
 if(isset($_COOKIE['ultimaConexion'])){//Si la cookie no ha expirado mostramos la fecha y hora de la última conexión
     echo "<strong>Última conexión: </strong>".$_COOKIE['ultimaConexion'].'<br>';

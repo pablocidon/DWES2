@@ -1,7 +1,6 @@
 <?php
-$error='';
-require "Librerias/conexionDB.php";
-require "Librerias/LibreriaValidacion.php";
+$error='';//Variable para mostrar los mensajes de error
+require "Librerias/conexionDB.php";//Fichero de configuración para conectarse a la base de datos
 if(isset($_POST['cancelar'])){
     header('Location:../index.html');
 }
@@ -9,6 +8,7 @@ if(filter_has_var(INPUT_POST, 'aceptar')) {
     $usuario = $_POST['usuario'];//Alamacenamos el usuario en una variable.
     $password = hash('sha256', $_POST['password']); //Almacenamos la contraseña encriptandola.
     try {
+        //Establecemos la conexión a la base de datos para consultar que el usuario y contraseña son correctos
         $miDB=new PDO(DATOSCONEXION, USER,PASSWORD);
         $miDB->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $consulta = $miDB->prepare("SELECT CodUsuario,Password FROM Usuarios WHERE CodUsuario=:usuario AND Password=:password");
@@ -16,17 +16,17 @@ if(filter_has_var(INPUT_POST, 'aceptar')) {
         $consulta->bindParam(':usuario', $usuario);
         $consulta->bindParam(':password', $password);
         $consulta->execute();//Ejecutamos la consulta
-        if ($consulta->rowCount() == 1) {
-            session_start();
-            $_SESSION['usuario']=$usuario;
-            header("Location: programa.php");
+        if ($consulta->rowCount() == 1) {//Si la consulta devuelve un resultado
+            session_start();//Iniciamos la sesión
+            $_SESSION['usuario']=$usuario;//Almacenamos el usuario que ha iniciado sesión.
+            header("Location: programa.php");//Nos vamos a la ventana del programa
         }else {
-            $error = "Usuario o contraseña no válidos!";
+            $error = "Error en el usuario o contraseña";//Si no hay resultados mostramos de nuevo el login mostrando el mensaje de error
         }
     } catch (PDOException $exception) {
-        echo $exception->getMessage();
+        echo $exception->getMessage();//En caso de que salte la excepción mostramos un mensaje.
     }finally{
-        unset($miDB);
+        unset($miDB);//Cerramos la conexión con la base de datos.
     }
 }
 
@@ -57,4 +57,3 @@ if(filter_has_var(INPUT_POST, 'aceptar')) {
 </form>
 </body>
 </html>
-
