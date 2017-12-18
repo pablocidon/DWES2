@@ -17,7 +17,7 @@ if(filter_has_var(INPUT_POST, 'aceptar')) {
         //Establecemos la conexión a la base de datos para consultar que el usuario y contraseña son correctos
         $miDB=new PDO(DATOSCONEXION, USER,PASSWORD);
         $miDB->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $consulta = $miDB->prepare("SELECT CodUsuario,Password FROM Usuarios WHERE CodUsuario=:usuario AND Password=:password");
+        $consulta = $miDB->prepare("SELECT * FROM Usuarios WHERE CodUsuario=:usuario AND Password=:password");
         //Parámetros de la consulta
         $consulta->bindParam(':usuario', $usuario);
         $consulta->bindParam(':password', $password);
@@ -25,7 +25,11 @@ if(filter_has_var(INPUT_POST, 'aceptar')) {
         if ($consulta->rowCount() == 1) {//Si la consulta devuelve un resultado
             session_start();//Iniciamos la sesión
             $_SESSION['usuario']=$usuario;//Almacenamos el usuario que ha iniciado sesión.
-            header("Location: encuesta.php");//Nos vamos a la ventana de la encuesta.
+            if($consulta->Perfil=='Administrador'){//En caso de que el usuario sea administrador
+                header("Location: seguimiento.php");//Nos vamos a la ventana de la encuesta.
+            }else{
+                header("Location: encuesta.php");//Nos vamos a la ventana de la encuesta.
+            }
         }else {
             $error = "Error en el usuario o contraseña";//Si no hay resultados mostramos de nuevo el login mostrando el mensaje de error
         }

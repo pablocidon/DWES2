@@ -54,52 +54,58 @@ if(!filter_has_var(INPUT_POST,'enviar')||$correcto=false){
 </header>
 <form name="input" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
     <label for="edad">Edad:</label><br>
-    <input type="radio" name="edad" value="menor de 15" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
+    <span class="respuestas">
+    Menos de 15 años<input type="radio" name="edad" value="menor de 15" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
         echo 'value="', $_POST['edad'], '"';
-    } ?>>Menos de 15 años<br>
-    <input type="radio" name="edad" value="entre 15 y 20" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
+    } ?>><br>
+    Entre 15 y 20 años<input type="radio" name="edad" value="entre 15 y 20" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
         echo 'value="', $_POST['edad'], '"';
-    } ?>>Entre 15 y 20 años<br>
-    <input type="radio" name="edad" value="entre 21 y 25" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
+    } ?>><br>
+    Entre 21 y 25 años<input type="radio" name="edad" value="entre 21 y 25" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
         echo 'value="', $_POST['edad'], '"';
-    } ?>>Entre 21 y 25 años<br>
-    <input type="radio" name="edad" value="entre 26 y 30" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
+    } ?>><br>
+    Entre 26 y 30 años<input type="radio" name="edad" value="entre 26 y 30" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
         echo 'value="', $_POST['edad'], '"';
-    } ?>>Entre 26 y 30 años<br>
-    <input type="radio" name="edad" value="entre 31 y 35" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
+    } ?>><br>
+    Entre 31 y 35 años<input type="radio" name="edad" value="entre 31 y 35" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
         echo 'value="', $_POST['edad'], '"';
-    } ?>>Entre 31 y 35 años<br>
-    <input type="radio" name="edad" value="entre 36 y 40" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
+    } ?>><br>
+    Entre 36 y 40 años<input type="radio" name="edad" value="entre 36 y 40" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
         echo 'value="', $_POST['edad'], '"';
-    } ?>>Entre 36 y 40 años<br>
-    <input type="radio" name="edad" value="entre 41 y 45" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
+    } ?>><br>
+    Entre 41 y 45 años<input type="radio" name="edad" value="entre 41 y 45" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
         echo 'value="', $_POST['edad'], '"';
-    } ?>>Entre 41 y 45 años<br>
-    <input type="radio" name="edad" value="entre 46 y 50" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
+    } ?>><br>
+    Entre 46 y 50 años<input type="radio" name="edad" value="entre 46 y 50" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
         echo 'value="', $_POST['edad'], '"';
-    } ?>>Entre 46 y 50 años<br>
-    <input type="radio" name="edad" value="entre 51 y 55" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
+    } ?>><br>
+    Entre 51 y 55 años<input type="radio" name="edad" value="entre 51 y 55" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
         echo 'value="', $_POST['edad'], '"';
-    } ?>>Entre 51 y 55 años<br>
-    <input type="radio" name="edad" value="entre 56 y 60" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
+    } ?>><br>
+    Entre 56 y 60 años<input type="radio" name="edad" value="entre 56 y 60" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
         echo 'value="', $_POST['edad'], '"';
-    } ?>>Entre 56 y 60 años<br>
-    <input type="radio" name="edad" value="mayor de 60" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
+    } ?>><br>
+    Mayor de 60<input type="radio" name="edad" value="mayor de 60" <?php if (isset($_POST['edad']) && empty($errores['edad'])) {
         echo 'value="', $_POST['edad'], '"';
-    } ?>>Mayor de 60<br>
+    } ?>><br>
+    </span>
     <br><br>
+
+
     <label for="sexo">Sexo:</label><br>
-    <input type="radio" name="genero" value="hombre" <?php if (isset($_POST['genero']) && empty($errores['genero'])) {
+    <span class="respuestas">
+    Hombre<input type="radio" name="genero" value="hombre" <?php if (isset($_POST['genero']) && empty($errores['genero'])) {
         echo 'value="', $_POST['genero'], '"';
-    } ?>>Hombre<br>
-    <input type="radio" name="genero" value="mujer" <?php if (isset($_POST['genero']) && empty($errores['genero'])) {
+    } ?>><br>
+    Mujer<input type="radio" name="genero" value="mujer" <?php if (isset($_POST['genero']) && empty($errores['genero'])) {
         echo 'value="', $_POST['genero'], '"';
-    } ?>>Mujer<br>
+    } ?>><br>
+        </span>
     <br><br>
     <!--<span class="error"><?php// echo $error;
     ?></span>-->
     <label for="categorias">¿Qué tipo de película le gusta más?</label>
-    <select name="categoria">
+    <select name="categoria" id="categorias">
         <option class="heading" selected>Seleccionar</option>
         <option value="accion">Acción</option>
         <option value="animacion">Animación</option>
@@ -115,40 +121,46 @@ if(!filter_has_var(INPUT_POST,'enviar')||$correcto=false){
     </select>
     <br><br>
     <label for="frecuencia">Frecuencia con la que acude al cine:</label><br>
-    <input type="radio" name="frecuencia" value="nunca" <?php if (isset($_POST['frecuencia']) && empty($errores['frecuencia'])) {
+    <span class="respuestas">
+    Nunca<input type="radio" name="frecuencia" value="nunca" <?php if (isset($_POST['frecuencia']) && empty($errores['frecuencia'])) {
         echo 'value="', $_POST['frecuencia'], '"';
-    } ?>>Nunca<br>
-    <input type="radio" name="frecuencia" value="muy poco" <?php if (isset($_POST['frecuencia']) && empty($errores['frecuencia'])) {
+    } ?>><br>
+    Muy Poco<input type="radio" name="frecuencia" value="muy poco" <?php if (isset($_POST['frecuencia']) && empty($errores['frecuencia'])) {
         echo 'value="', $_POST['frecuencia'], '"';
-    } ?>>Muy Poco<br>
-    <input type="radio" name="frecuencia" value="poco" <?php if (isset($_POST['frecuencia']) && empty($errores['frecuencia'])) {
+    } ?>><br>
+    Poco<input type="radio" name="frecuencia" value="poco" <?php if (isset($_POST['frecuencia']) && empty($errores['frecuencia'])) {
         echo 'value="', $_POST['frecuencia'], '"';
-    } ?>>Poco<br>
-    <input type="radio" name="frecuencia" value="ocasionalmente" <?php if (isset($_POST['frecuencia']) && empty($errores['frecuencia'])) {
+    } ?>><br>
+    Ocasionalmente<input type="radio" name="frecuencia" value="ocasionalmente" <?php if (isset($_POST['frecuencia']) && empty($errores['frecuencia'])) {
         echo 'value="', $_POST['frecuencia'], '"';
-    } ?>>Ocasionalmente<br>
-    <input type="radio" name="frecuencia" value="bastante" <?php if (isset($_POST['frecuencia']) && empty($errores['frecuencia'])) {
+    } ?>><br>
+    Bastante<input type="radio" name="frecuencia" value="bastante" <?php if (isset($_POST['frecuencia']) && empty($errores['frecuencia'])) {
         echo 'value="', $_POST['frecuencia'], '"';
-    } ?>>Bastante<br>
-    <input type="radio" name="frecuencia" value="mucho" <<?php if (isset($_POST['frecuencia']) && empty($errores['frecuencia'])) {
+    } ?>><br>
+    Mucho<input type="radio" name="frecuencia" value="mucho" <<?php if (isset($_POST['frecuencia']) && empty($errores['frecuencia'])) {
         echo 'value="', $_POST['frecuencia'], '"';
-    } ?>>Mucho<br>
+    } ?>><br>
+        </span>
     <br><br>
     <label for="cartelera">¿Acude siempre que ve algo interesante en la cartelera?:</label><br>
-    <input type="radio" name="cartelera" value="si" <?php if (isset($_POST['cartelera']) && empty($errores['cartelera'])) {
+    <span class="respuestas">
+    Sí<input type="radio" name="cartelera" value="si" <?php if (isset($_POST['cartelera']) && empty($errores['cartelera'])) {
         echo 'value="', $_POST['cartelera'], '"';
-    } ?>>Sí<br>
-    <input type="radio" name="cartelera" value="a veces" <?php if (isset($_POST['cartelera']) && empty($errores['cartelera'])) {
+    } ?>><br>
+    A veces<input type="radio" name="cartelera" value="a veces" <?php if (isset($_POST['cartelera']) && empty($errores['cartelera'])) {
         echo 'value="', $_POST['cartelera'], '"';
-    } ?>>A veces<br>
-    <input type="radio" name="cartelera" value="no" <?php if (isset($_POST['cartelera']) && empty($errores['cartelera'])) {
+    } ?>><br>
+    No<input type="radio" name="cartelera" value="no" <?php if (isset($_POST['cartelera']) && empty($errores['cartelera'])) {
         echo 'value="', $_POST['cartelera'], '"';
-    } ?>>No<br>
+    } ?>><br>
+         </span>
     <br><br>
     <label for="opinion">Introduzca una breve opinión respecto al cine:</label><br>
+    <span >
     <textarea name="opinion" id="opinion" cols="50" rows="10" <?php if (isset($_POST['opinion']) && empty($errores['opinion'])) {
         echo 'value="', $_POST['opinion'], '"';
     } ?>></textarea>
+    </span>
     <br><br>
     <input type="submit" value="Enviar" name="enviar">
     <input type="submit" name="salir" value="Cerrar Sesión">
