@@ -41,7 +41,7 @@ if(filter_has_var(INPUT_POST, 'aceptar')) {
     <link rel="stylesheet" type="text/css" href="../base.css"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
-    <!--<link rel="stylesheet" type="text/css" href="css/estilos.css">-->
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <title>PCB-DWES</title>
 </head>
 <body>
