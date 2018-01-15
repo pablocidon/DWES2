@@ -18,7 +18,7 @@ class DBPDO{ //Creamos la clase para la conexión a la base de datos.
             $consulta->execute($parametros);//Ejecutamos la consulta con los parámetros
         }catch (PDOException $exception){//Si hay algún error
             $consulta=null;//Destruimos la consulta
-            echo $exception->getMessage();//En caso de que salte la excepción mostramos un mensaje.
+            unset($miDB);
         }
         return $consulta;//Resultado que nos devuelve la función.
     }
