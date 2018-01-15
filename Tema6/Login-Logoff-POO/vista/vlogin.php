@@ -3,9 +3,9 @@
     * Autor: Pablo Cidón.
     * Creado: 12-01-2018.
     * Archivo: vlogin.php
-    * Modificado: 12-01-2018.
+    * Modificado: 15-01-2018.
 */
-
+require_once "../controlador/clogin.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -13,11 +13,12 @@
     <link rel="stylesheet" type="text/css" href="../base.css"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="shortcut icon" href="../../../../favicon.ico" type="image/x-icon">
-    <!--<link rel="stylesheet" type="text/css" href="../../../base.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="css/estilos.css">-->
     <title>PCB-DWES</title>
 </head>
+<body>
 <header>
-    <h1>LOGIN-LOGOFF-POO</h1>
+    <h1>LOGIN-LOGOFF</h1>
 </header>
 <form name="input" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
     <label for="usuario">Usuario</label>
@@ -33,7 +34,6 @@
 </form>
 <footer>
     <p id="pie">Pablo Cidon Curso 2017-2018</p>
-    <a href="../../index.html" id="menu">Volver</a>
 </footer>
 </body>
 </html>
