@@ -5,7 +5,7 @@
     * Archivo: clogin.php
     * Modificado: 15-01-2018.
 */
-require_once "../datos/UsuarioPDO.php";
+require_once "../modelo/UsuarioPDO.php";
 if(isset($_POST['cancelar'])){
     header('Location:../index.html');
 }

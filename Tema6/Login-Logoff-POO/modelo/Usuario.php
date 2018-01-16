@@ -6,7 +6,7 @@
     * Archivo: Usuario.php
     * Modificado: 15-01-2018.
 */
-require_once "../datos/UsuarioPDO.php";
+require_once "UsuarioPDO.php";
 class Usuario{
     private $codUsuario;
     private $descUsuario;

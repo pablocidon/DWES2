@@ -17,15 +17,15 @@
 <body>
 <h1>DBPDO.php</h1>
 <?php
-show_source("../datos/DBPDO.php");
+show_source("../modelo/DBPDO.php");
 ?>
 <h1>UsuarioDB.php</h1>
 <?php
-show_source("../datos/UsuarioDB.php");
+show_source("../modelo/UsuarioDB.php");
 ?>
 <h1>UsuarioPDO.php</h1>
 <?php
-show_source("../datos/UsuarioPDO.php");
+show_source("../modelo/UsuarioPDO.php");
 ?>
 <h1>cinicio.php</h1>
 <?php
@@ -37,7 +37,7 @@ show_source("../controlador/clogin.php");
 ?>
 <h1>index.php</h1>
 <?php
-show_source("../controlador/index.php");
+show_source("../index.php");
 ?>
 <h1>Usuario.php</h1>
 <?php
