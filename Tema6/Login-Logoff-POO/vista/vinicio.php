@@ -5,7 +5,6 @@
     * Archivo: vinicio.php
     * Modificado: 15-01-2018.
 */
-//require_once "../controlador/cinicio.php";
 ?>
 <!DOCTYPE html>
 <html lang="es">

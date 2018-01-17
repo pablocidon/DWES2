@@ -3,9 +3,9 @@
     * Autor: Pablo Cidón.
     * Creado: 12-01-2018.
     * Archivo: vlogin.php
-    * Modificado: 15-01-2018.
+    * Modificado: 17-01-2018.
 */
-require_once "../controlador/clogin.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,7 +27,7 @@ require_once "../controlador/clogin.php";
     <label for="password">Contraseña</label>
     <input type="password" placeholder="Contraseña" name="password">
     <br><br>
-    <span class="error"><?php echo $error; ?></span>
+    <?php echo "<span class='error'>".$error."</span>";?>
     <br><br>
     <input type="submit" value="Aceptar" name="aceptar">
     <input type="submit" value="Cancelar" name="cancelar">
