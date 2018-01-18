@@ -15,22 +15,23 @@ class Usuario{
     private $ultimaConexion;
     private $contadorAccesos;
 
-    public static function validarUsuario($codUsuario,$password){//Función para validar el usuario.
+
+    public static function validarUsuario($codUsuario,$password){
         $usuario=null;
-        $arrayUsuario=UsuarioPDO::validarUsuario($codUsuario,$password);//Llamamos a la función de validación del UsuarioPDO, que nos buscará el usuario en la base de datos
-        if(!empty($arrayUsuario)) {//Si se encuentra un usuario, se crea un nuevo objeto de la clase usuario
+        $arrayUsuario=UsuarioPDO::validarUsuario($codUsuario,$password);
+        if(!empty($arrayUsuario)) {
             $usuario = new Usuario($codUsuario, $arrayUsuario['descUsuario'], $password, $arrayUsuario['perfil'], $arrayUsuario['ultimaConexion'], $arrayUsuario['contadorAccesos']);
         }
         return $usuario;
     }
 
-    public function __construct($row){//Función constructora
-        $this->codUsuario = $row['codUsuario'];
-        $this->descUsuario = $row['descUsuario'];
-        $this->password = $row['password'];
-        $this->perfil = $row['perfil'];
-        $this->ultimaConexion = $row['ultimaConexion'];
-        $this->contadorAccesos = $row['contadorAccesos'];
+    public function __construct($codUsuario, $descUsuario, $password, $perfil, $ultimaConexion, $contadorAccesos){
+        $this->codUsuario=$codUsuario;
+        $this->descUsuario=$descUsuario;
+        $this->password=$password;
+        $this->perfil=$perfil;
+        $this->ultimaConexion=$ultimaConexion;
+        $this->contadorAccesos;
     }
 
     public function getCodUsuario(){
