@@ -1,0 +1,391 @@
+Codigo archivos Configuracion
+Codigo DBconfig.php
+<?php
+define ("mysql_host","192.168.20.19");
+define ("mysql_User","DAW205");
+define ("mysql_Password","paso");
+define ("mysql_BaseDatos","DAW205_DBUsuariosMVC");
+define("DATOSCONEXION","mysql:host=192.168.20.19;dbname=DAW205_DBUsuariosMVC");
+?>
+Codigo configuracion.php
+<?php
+$vistas=[
+    'inicio'=>'Vista/vinicio.php',
+    'login'=>'Vista/vlogin.php'
+];
+$controladores=[
+    'inicio'=>'Controlador/cinicio.php',
+    'login'=>'Controlador/clogin.php'
+    ];
+?>
+Codigo archivos Controlador
+Codigo cinicio.php
+<?php
+    if(!isset($_SESSION['usuario'])){//Comprobamos que si no existe la sesion se redirige al index.php.
+        header("Location: index.php?pagina=login");
+    }
+    if (isset($_POST['Salir'])){//Si se pulsa el boton de salir se destruye la sesion del usuario y se redirige a index.php
+        unset($_SESSION['usuario']);
+        session_destroy();
+        header("Location: index.php?pagina=login");
+    }else{//En caso de que no exista la sesion se muestra la vista del inicio.
+        require_once 'Vista/layout.php';
+    }
+?>
+Codigo clogin.php
+<?php
+    $entradaOK = false;//Variable boolean que controla si el usuario es correcto o no.
+    $error='';//Mensaje que se mostrara por pantalla en caso de que el usuario sea incorrecto
+    if(isset($_SESSION['usuario'])){//Si existe la sesion del usuario se redirige al index
+        header("Location: index.php?pagina=inicio");
+    }else{//Si no existe la sesion se valida el usuario.
+        if (isset($_POST['Salir'])){//Si se pulsa el boton salir se redirige al indexTema6.php
+            header("Location: ../IndexTema6.php");
+        }
+        if(isset($_POST['Enviar'])) {//Si se pulsa el boton de enviar se valida el usuario.
+            $codUsuario = $_POST['codUsuario'];
+            $password = $_POST['password'];
+            $usuario = Usuario::validarUsuario($codUsuario, $password);
+
+            if (is_null($usuario)) {//Si el usuario devuelto es null se muestra un mensaje por pantalla.
+                $error = 'El nombre o la contraseña son incorrectos';
+            } else {//Si devuelve el usuario se cambiar la variable entradaOK a true.
+                $entradaOK = true;
+            }
+        }
+            if ($entradaOK) {//Si la entrada está bien se guarda la sesion y se redirige a index.php
+                $_SESSION['usuario'] = $usuario;
+                header("Location: index.php?pagina=inicio");
+            } else {//Si no esta bien el usuario se vuelve a mostrar el formulario
+                require_once('Vista/layout.php');
+        }
+    }
+?>
+Codigo index.php
+<?php
+    require_once 'Modelo/Usuario.php';
+    require_once 'Configuracion/DBconfig.php';
+    require_once 'Configuracion/configuracion.php';
+    $controlador='Controlador/cinicio.php';
+    session_start();//Se inicia la sesion
+    if(isset($_SESSION['usuario'])){    //Comprobamos que existe la sesion del usuario y usamos el controlador de inicio.
+        if(isset($controladores[$_GET['pagina']])) {
+            $controlador = $controladores[$_GET['pagina']];
+        }
+    }else{
+        $controlador='Controlador/clogin.php';
+    }
+    require_once $controlador;
+?>
+
+Codigo archivos Modelo
+Codigo DBPDO.php
+<?php
+
+class Dbpdo{
+
+    /**
+     * Funcion para ejecutar una consulta.
+     *
+     * Pasandole la consulta sql y los parametros realiza una consulta a la BD.
+     *
+     * @param string    $sql    Consulta sql que le pasas
+     * @param array     $parametros     Parametros que le pasas a la funcion
+     * @return null|PDOStatement    $resultado      El statement resultante de la consulta
+     */
+    public static function ejecutaConsulta($sql, $parametros){
+        try {
+            $conexion = new PDO(DATOSCONEXION, mysql_User, mysql_Password);
+           //$conexion = new PDO('mysql:host=192.168.20.19;dbname=DAW205_DBUsuariosMVC', 'DAW205', 'paso');//Configuracion de la conexion a la base de datos
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $resultado = $conexion->prepare($sql);
+            $resultado->execute($parametros);
+
+        } catch (PDOException $exception) {
+            echo $exception->getMessage();
+            $resultado=null;
+            unset($conexion);
+            exit;
+        }
+        return $resultado;
+    }
+
+}
+?>
+Codigo UsuarioDB.php
+<?php
+    interface UsuarioDB{
+        public static function validarUsuario($codUsuario,$password);
+    }
+?>
+Codigo Usuario.php
+<?php
+    require_once 'UsuarioPDO.php';
+
+/**
+ * Class Usuario
+ * @author  Sergio Marqués Martín
+ */
+class Usuario{
+        //Atributos del objeto usuario.
+
+
+    /**
+     * @var string  $codUsuario     Codigo del usuario.
+     */
+    private $codUsuario;
+    /**
+     * @var string  $descUsuario    Descripcion del usuario
+     */
+    private $descUsuario;
+    /**
+     * @var string  $password       Contraseña del usuario.
+     */
+    private $password;
+    /**
+     * @var string  $perfil     Tipo de perfil del usuario
+     */
+    private $perfil;
+    /**
+     * @var datetime $ultimaConexion      Ultima conexion del usuario.
+     */
+    private $ultimaConexion;
+    /**
+     * @var int     $contadorAccesos      Contador de los accesos del usuario
+     */
+    private $contadorAccesos;
+
+
+        /**
+         * Constructor de la clase Usuario.
+         *
+         * Función que contruye un objeto de la clase Usuario.
+         *
+         * @param   string  $codUsuario     codigo del usuario.
+         * @param   string  $descUsuario    descripcion del usuario.
+         * @param   string  $password       contraseña del usuario.
+         * @param   string  $perfil         tipo de perfil del usuario.
+         * @param   datetime    $ultimaConexion     ultima conexion del usuario.
+         * @param   int     $contadorAccesos    contador de las veces que inicia sesion el usuario.
+         */
+        public function __construct($codUsuario, $descUsuario, $password, $perfil, $ultimaConexion, $contadorAccesos){
+            $this->codUsuario=$codUsuario;
+            $this->descUsuario=$descUsuario;
+            $this->password=$password;
+            $this->perfil=$perfil;
+            $this->ultimaConexion=$ultimaConexion;
+            $this->contadorAccesos;
+        }
+        /**
+         * Función para validar el usuario
+         *
+         * Funcion a la que se le pasan los parametros codUsuario y password y usa el metodo validarUsuario de la clase
+         * UsuarioPDO, devuelve un objeto usuario.
+         *
+         * @param   string  $codUsuario Codigo del usuario que le pasamos.
+         * @param   string  $password   Contraseña del usuario.
+         *
+         * @return object   $usuario    Objeto de la clase Usuario que contien la informacion del usuario.
+         */
+
+        public static function validarUsuario($codUsuario,$password){
+            $usuario=null;
+            $arrayUsuario=UsuarioPDO::validarUsuario($codUsuario,$password);
+            if(!empty($arrayUsuario)) {
+                $usuario = new Usuario($codUsuario, $arrayUsuario['descUsuario'], $password, $arrayUsuario['perfil'], $arrayUsuario['ultimaConexion'], $arrayUsuario['contadorAccesos']);
+            }
+            return $usuario;
+        }
+
+
+    /**
+     * @return mixed    $codUsuario
+     */
+    public function getCodUsuario(){
+            return $this->codUsuario;
+        }
+
+
+    /**
+     * @return mixed    $descUsuario
+     */
+    public function getDescUsuario(){
+            return $this->descUsuario;
+        }
+
+    /**
+     * @param string    $descUsuario
+     */
+    public function setDescUsuario($descUsuario){
+            $this->descUsuario = $descUsuario;
+        }
+
+    /**
+     * @return mixed    $password
+     */
+    public function getPassword(){
+            return $this->password;
+        }
+
+    /**
+     * @param string    $password
+     */
+    public function setPassword($password){
+            $this->password = $password;
+        }
+
+    /**
+     * @return mixed    $perfil
+     */
+    public function getPerfil(){
+            return $this->perfil;
+        }
+
+    /**
+     * @param string    $perfil
+     */
+    public function setPerfil($perfil){
+            $this->perfil = $perfil;
+        }
+
+    /**
+     * @return mixed    $ultimaConexion
+     */
+    public function getUltimaConexion(){
+            return $this->ultimaConexion;
+        }
+
+    /**
+     * @param datetime  $ultimaConexion
+     */
+    public function setUltimaConexion($ultimaConexion){
+            $this->ultimaConexion = $ultimaConexion;
+        }
+
+    /**
+     * @return mixed    $contadorAccesos
+     */
+    public function getContadorAccesos(){
+            return $this->contadorAccesos;
+        }
+
+    /**
+     * @param int   $contadorAccesos
+     */
+    public function setContadorAccesos($contadorAccesos){
+            $this->contadorAccesos = $contadorAccesos;
+        }
+
+    }
+?>
+Codigo UsuarioPDO.php
+<?php
+    require_once 'DBPDO.php';
+    require_once 'UsuarioDB.php';
+    class UsuarioPDO implements UsuarioDB {
+
+        /**
+         * Funcion para validar un usuario.
+         *
+         * Esta funcion valida un usuario pasandole un $codUsuario y un $password.
+         *
+         * @param string    $codUsuario     Codigo unico de cada usuario
+         * @param string    $password       Contraseña del usuario
+         * @return array    $arrayUsuario   Array que guarda toda la informacion de un usuario.
+         */
+        public static function validarUsuario($codUsuario, $password){
+            $sql = "Select * from Usuarios WHERE codUsuario='" . $codUsuario . "' and password= SHA2('" . $password . "',256)";
+            $arrayUsuario=[];
+            $resultadoConsulta=DBPDO::ejecutaConsulta($sql,[$codUsuario,$password]);
+            if ($resultadoConsulta->rowCount()==1) {
+                $resultadoFetch = $resultadoConsulta->fetchObject();
+                $arrayUsuario['descUsuario'] = $resultadoFetch->descUsuario;
+                $arrayUsuario['perfil'] = $resultadoFetch->perfil;
+                $arrayUsuario['ultimaConexion'] = $resultadoFetch->ultimaConexion;
+                $arrayUsuario['contadorAccesos'] = $resultadoFetch->contadorAccesos;
+            }
+            return $arrayUsuario;
+        }
+    }
+?>
+Codigo archivos Vista
+Codigo Layout.php
+<?php
+$vista='Vista/vlogin.php';
+if(isset($_GET['pagina'])) {
+        $vista = $vistas[$_GET['pagina']];
+    }
+?>
+<html>
+<head>
+    <link rel="stylesheet" href="Webroot/css/estilosLogin.css" type="text/css">
+</head>
+<body>
+<form action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
+<?php require_once $vista;?>
+</form>
+</body>
+</html>
+Codigo vinicio.php
+<?php
+    echo "<h1>Bienvenido ",$_SESSION['usuario']->getcodUsuario(),"</h1><br>";
+echo "<h1>Permisos de ",$_SESSION['usuario']->getPerfil(),"</h1><br>";
+
+?>
+        <input type="submit" name="Salir" value="Cerrar sesión">
+Codigo vlogin.php
+    <?php echo "<span>".$error."</span>";?>
+    <p>Usuario:</p>
+    <input type="text" name="codUsuario"/><br>
+    <p>Contraseña:</p>
+    <input type="password" name="password"/><br>
+
+    <input type="submit" name="Enviar" value="Iniciar sesión">
+    <input type="submit" name="Salir" value="Salir">
+</form>
+<div id="imagen">
+    <div id="mapa">
+        <h1>LOGIN LOGOFF MVC</h1>
+        <h1><u>Arbol de navegación</u></h1>
+        <img  src="Webroot/media/img/arbolnavegacion.PNG"/>
+    </div>
+    <div id="almacenamiento">
+        <h1><u>Almacenamiento</u></h1>
+        <img src="Webroot/media/img/estructuraalmacenamiento.PNG"/>
+    </div>
+    <div id="modeloFisico">
+        <h1><u>Modelo fisico de datos</u></h1>
+        <img  src="Webroot/media/img/modeloclases.PNG"/>
+    </div>
+</div>
+    <?php
+    echo "<h1><u>Codigo archivos Configuracion</u></h1>";
+    echo "<h2>Codigo DBconfig.php</h2>";
+    highlight_file('Configuracion/DBconfig.php');
+    echo "<h2>Codigo configuracion.php</h2>";
+    highlight_file('Configuracion/configuracion.php');
+    echo "<h1><u>Codigo archivos Controlador</u></h1>";
+    echo "<h2>Codigo cinicio.php</h2>";
+    highlight_file('Controlador/cinicio.php');
+    echo "<h2>Codigo clogin.php</h2>";
+    highlight_file('Controlador/clogin.php');
+    echo "<h2>Codigo index.php</h2>";
+    highlight_file('index.php');
+    echo "<h1><u>Codigo archivos Modelo</u></h1>";
+    echo "<h2>Codigo DBPDO.php</h2>";
+    highlight_file('Modelo/DBPDO.php');
+    echo "<h2>Codigo UsuarioDB.php</h2>";
+    highlight_file('Modelo/UsuarioDB.php');
+    echo "<h2>Codigo Usuario.php</h2>";
+    highlight_file('Modelo/Usuario.php');
+    echo "<h2>Codigo UsuarioPDO.php</h2>";
+    highlight_file('Modelo/UsuarioPDO.php');
+    echo "<h1><u>Codigo archivos Vista</u></h1>";
+    echo "<h2>Codigo Layout.php</h2>";
+    highlight_file('Vista/layout.php');
+    echo "<h2>Codigo vinicio.php</h2>";
+    highlight_file('Vista/vinicio.php');
+    echo "<h2>Codigo vlogin.php</h2>";
+    highlight_file('Vista/vlogin.php');
+    ?>
+

@@ -5,6 +5,7 @@
     * Archivo: clogin.php
     * Modificado: 18-01-2018.
 */
+    $vista = "login";
     $correcto = false;
     $error='';
     if(isset($_SESSION['usuario'])){
@@ -26,6 +27,7 @@
         }
             if ($correcto) {
                 $_SESSION['usuario'] = $usuario;
+                $_SESSION['password'] = hash('sha256', $password);
                 header("Location: index.php?pagina=inicio");
             } else {
                 require_once('vista/layout.php');
