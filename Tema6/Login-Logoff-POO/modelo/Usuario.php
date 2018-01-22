@@ -8,13 +8,46 @@
 */
 require_once "UsuarioPDO.php";
 class Usuario{
+    /**
+     * Clase que nos permite trabajar con el objeto usuario.
+     *
+     * Función de crear usuarios y operar a través de sus métodos.
+     *
+     *@author Pablo Cidón Barrio.
+     *@since 17-01-2018
+     */
+
+    /**
+     * @var string $codUsuario Código del usuario.
+     */
     private $codUsuario;
+    /**
+     * @var string $descUsuario Datos relativos al usuario.
+     */
     private $descUsuario;
+    /**
+     * @var string $password Contraseña del usuario.
+     */
     private $password;
+    /**
+     * @var string $perfil Tipo de perfil del usuario.
+     */
     private $perfil;
+    /**
+     * @var datetime $ultimaConexion Fecha de la última vez que el usuario accedió al programa.
+     */
     private $ultimaConexion;
+    /**
+     * @var integer $contadorAccesos Contador de las veces que el usuario a iniciado sesión en el programa.
+     */
     private $contadorAccesos;
 
+
+    /**
+     * @param string $codUsuario Código del usuario que se ha introducido.
+     * @param string $password Contraseña que se ha introducido.
+     * @return null|Usuario Devuelve si el usuario se ha encontrado o no.
+     */
 
     public static function validarUsuario($codUsuario,$password){
         $usuario=null;
@@ -25,6 +58,32 @@ class Usuario{
         return $usuario;
     }
 
+    /**
+     * @param string $codUsuario Codigo del usuario en el que se llevará a cabo el contador
+     */
+    public static function contadorAccesos($codUsuario){
+
+    }
+
+    /**
+     * @param string $codUsuario Código del usuario del que se guardará la fecha.
+     * @param datetime $fecha Nueva fecha de última conexión
+     */
+
+    public static function ultimaConexion($codUsuario,$fecha){
+
+    }
+
+    /**
+     * Usuario constructor.
+     * @param string $codUsuario Código del usuario
+     * @param string $descUsuario Nombre y Apellidos del mismo
+     * @param string $password Contraseña del usuario.
+     * @param string $perfil Tipo de perfil que tendrá el usuario.
+     * @param datetime $ultimaConexion Fecha de la última conexión del usuario.
+     * @param integer $contadorAccesos Cantidad de veces que ha entrado en el sistema.
+     */
+
     public function __construct($codUsuario, $descUsuario, $password, $perfil, $ultimaConexion, $contadorAccesos){
         $this->codUsuario=$codUsuario;
         $this->descUsuario=$descUsuario;
@@ -34,14 +93,25 @@ class Usuario{
         $this->contadorAccesos;
     }
 
+    /**
+     * @return string
+     */
+
     public function getCodUsuario(){
         return $this->codUsuario;
     }
+
+    /**
+     * @return string
+     */
 
     public function getDescUsuario(){
         return $this->descUsuario;
     }
 
+    /**
+     * @return string
+     */
     public function getPassword(){
         return $this->password;
     }
@@ -50,34 +120,60 @@ class Usuario{
         return $this->perfil;
     }
 
+    /**
+     * @return datetime
+     */
     public function getUltimaConexion(){
         return $this->ultimaConexion;
     }
 
+    /**
+     * @return int
+     */
     public function getContadorAccesos(){
         return $this->contadorAccesos;
     }
 
+    /**
+     * @param string $codUsuario Código de usuario nuevo.
+     */
     public function setCodUsuario($codUsuario){
         $this->codUsuario = $codUsuario;
     }
+
+    /**
+     * @param string $descUsuario Nueva descripción del usuario.
+     */
 
     public function setDescUsuario($descUsuario){
         $this->descUsuario = $descUsuario;
     }
 
+    /**
+     * @param string $password Nueva contraseña
+     */
     public function setPassword($password){
         $this->password = $password;
     }
+
+    /**
+     * @param string $perfil Nuevo tipon de perfil
+     */
 
     public function setPerfil($perfil){
         $this->perfil = $perfil;
     }
 
+    /**
+     * @param datetime $ultimaConexion Nueva fecha de última conexión
+     */
     public function setUltimaConexion($ultimaConexion){
         $this->ultimaConexion = $ultimaConexion;
     }
 
+    /**
+     * @param integer $contadorAccesos Nueva cantidad de accesos
+     */
     public function setContadorAccesos($contadorAccesos){
         $this->contadorAccesos = $contadorAccesos;
     }

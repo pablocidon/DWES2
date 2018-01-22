@@ -7,8 +7,21 @@
 */
 
 
+/**
+ * Class DBPDO
+ */
 class DBPDO{ //Creamos la clase para la conexión a la base de datos.
-
+    /**
+     * Función que nos permite realizar las consultas a la base de datos.
+     *
+     * La función recibe como parámetros la consulta sql y los parámetros de la misma.
+     *
+     * @param string $consultaSQL parámetro que contiene la consulta a realizar.
+     * @param array $parametros array que contendrá los parámetros que va a recibir la consulta.
+     * @return null|PDOStatement Resultado que devolverá la consulta.
+     * @author Pablo Cidón Barrio.
+     * @since 12-01-2018.
+     */
     public static function ejecutaConsulta($consultaSQL,$parametros){//Función que nos servirá para la ejecución de las consultas
         try{//Establecemos la conexión a la base de datos
             $miDB = new PDO(DATOSCONEXION, USER,PASSWORD);
