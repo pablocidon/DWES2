@@ -6,51 +6,52 @@
     * Modificado: 24-01-2018.
 */
 
-echo "'<h1>'.DBPDO.php.'</h1>'";
+echo "<h1>DBPDO.php</h1>";
 
-show_source("../modelo/DBPDO.php");
+show_source("modelo/DBPDO.php");
 
-echo "'<h1>'.UsuarioDB.php.'</h1>'";
+echo "<h1>UsuarioDB.php</h1>";
 
-show_source("../modelo/UsuarioDB.php");
+show_source("modelo/UsuarioDB.php");
 
-echo "'<h1>'.UsuarioPDO.php.'</h1>'";
+echo "<h1>UsuarioPDO.php</h1>";
 
-show_source("../modelo/UsuarioPDO.php");
+show_source("modelo/UsuarioPDO.php");
 
-echo "'<h1>'.Usuario.php.'</h1>'";
+echo "<h1>Usuario.php</h1>";
 
-show_source("../modelo/Usuario.php");
+show_source("modelo/Usuario.php");
 
-echo "'<h1>'.cinicio.php.'</h1>'";
+echo "<h1>cinicio.php</h1>";
 
-show_source("../controlador/cinicio.php");
+show_source("controlador/cinicio.php");
 
-echo "'<h1>'.clogin.php.'</h1>'";
+echo "<h1>clogin.php</h1>";
 
-show_source("../controlador/clogin.php");
+show_source("controlador/clogin.php");
 
-echo "'<h1>'.cWIP.php.'</h1>'";
+echo "<h1>cWIP.php</h1>";
 
-show_source("../controlador/cWIP.php");
+show_source("controlador/cWIP.php");
 
-echo "'<h1>'.index.php.'</h1>'";
+echo "<h1>index.php</h1>";
 
-show_source("../index.php");
+show_source("index.php");
 
-echo "'<h1>'.layout.php.'</h1>'";
+echo "<h1>layout.php</h1>";
 
-show_source("../vista/layout.php");
+show_source("vista/layout.php");
 
-echo "'<h1>'.vinicio.php.'</h1>'";
+echo "<h1>vinicio.php</h1>'";
 
-show_source("../vista/vinicio.php");
+show_source("vista/vinicio.php");
 
-echo "'<h1>'.vlogin.php.'</h1>'";
+echo "<h1>vlogin.php</h1>";
 
-show_source("../vista/vlogin.php");
+show_source("vista/vlogin.php");
 
-echo "'<h1>'.vWIP.php.'</h1>'";
+echo "<h1>vWIP.php</h1>";
 
-show_source("../vista/vWIP.php");
+show_source("vista/vWIP.php");
 ?>
+<input type="submit" name="volver" id="volver" value="Volver" class="btn btn-default">

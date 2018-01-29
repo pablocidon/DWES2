@@ -1,11 +1,11 @@
 <?php
 /*
     * Autor: Pablo Cidón.
-    * Creado: 24-01-2018.
-    * Archivo: cWIP.php
-    * Modificado: 24-01-2018.
+    * Creado: 26-01-2018.
+    * Archivo: ccodigo.php
+    * Modificado: 26-01-2018.
 */
-$vista='WIP';
+$vista='codigo';
 if (isset($_POST['volver'])){
     if(isset($_GET['paginaAnterior'])){
         header("Location: index.php?pagina=".$_GET['paginaAnterior']);
@@ -13,7 +13,7 @@ if (isset($_POST['volver'])){
         header("Location: index.php");
     }
 }else{
-    $_GET['pagina']="WIP";
-    require_once "vista/layout.php";
+    $_GET['pagina']="codigo";
+    require_once 'vista/layout.php';
 }
 ?>

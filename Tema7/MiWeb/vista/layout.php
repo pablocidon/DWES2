@@ -12,14 +12,23 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="shortcut icon" href="../../../favicon.ico" type="image/x-icon">
-    <!--<link rel="stylesheet" type="text/css" href="webroot/css/estilos.css">-->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+    <link rel="stylesheet" href="webroot/css/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="webroot/css/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="webroot/css/estilos.css">
     <title>PCB-DWES</title>
 </head>
 <body>
+<header>
+    <div class="container">
+        <h1>WEB DE PABLO</h1>
+    </div>
+</header>
+<div class="container">
+    <br><br>
 
-<form name="input" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post">
-    <h1>WEB DE PABLO</h1>
-    <?php
+        <?php
         if ($vista=="login"){
             include_once 'vlogin.php';
         }else if ($vista=="inicio"){
@@ -29,15 +38,20 @@
         }else if($vista=='codigo'){
             include_once 'vcodigo.php';
         }
-    ?>
-</form>
-<footer >
-    <a href="documentacion/codigo.php">Acceso al Código</a>
-    <a href="#">Acceso a PHP Doc</a>
-    <a href="#">Acceso al Código</a>
-    <a href="#">Acceso al Repositorio</a>
-    <a href="#">Acceso a las Tecnologías</a>
-    <p style="float: right" id="pie">Pablo Cidon Curso 2017-2018</p>
-</footer>
+        ?>
+
+</div>
+
+    <footer>
+        <a class="col-md-2 col-md-offset-1" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=codigo&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=codigo "; } ?>">Código</a>
+        <a class="col-md-2" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>">Repositorio</a>
+        <a class="col-md-2" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>">Tecnologías</a>
+        <a class="col-md-2" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>">PHPDoc</a>
+        <a class="col-md-2" href="../../index.html">Pablo Cidón</a>
+    </footer>
+
+<script type="text/javascript" href="webroot/css/bootstrap-3.3.7-dist/js/jquery-latest.js"></script>
+<script type="text/javascript" href="webroot/css/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script type="text/javascript" href="webroot/css/bootstrap-3.3.7-dist/js/npm.js"></script>
 </body>
 </html>

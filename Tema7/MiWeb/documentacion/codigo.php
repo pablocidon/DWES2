@@ -15,6 +15,10 @@
     <title>PCB-DWES</title>
 </head>
 <body>
+<h1>config.php</h1>
+<?php
+show_source("../config/config.php");
+?>
 <h1>DBPDO.php</h1>
 <?php
 show_source("../modelo/DBPDO.php");
