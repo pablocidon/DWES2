@@ -12,7 +12,7 @@
         header("Location: index.php?pagina=inicio");
     }else{
         if (isset($_POST['cancelar'])){
-            header("Location: ../index.html");
+            header("Location: ../../index.html");
         }
         if(isset($_POST['aceptar'])) {
             $codUsuario = $_POST['usuario'];
