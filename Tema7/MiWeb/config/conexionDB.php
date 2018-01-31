@@ -8,6 +8,6 @@
 define("HOST","localhost");
 define("USER","DAW211");
 define("PASSWORD","paso");
-define("DATABASE","DAW211_Usuarios");
-define("DATOSCONEXION","mysql:host=localhost;dbname=DAW211_Usuarios");
+define("DATABASE","DAW211_MiWeb");
+define("DATOSCONEXION","mysql:host=localhost;dbname=DAW211_MiWeb");
 ?>
