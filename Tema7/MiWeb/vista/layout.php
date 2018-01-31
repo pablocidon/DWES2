@@ -27,7 +27,7 @@
 </header>
 <div class="container">
     <br><br>
-
+    <form name="input" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal">
         <?php
         if ($vista=="login"){
             include_once 'vlogin.php';
@@ -37,14 +37,18 @@
             include_once 'vWIP.php';
         }else if($vista=='codigo'){
             include_once 'vcodigo.php';
+        }else if($vista=='registro'){
+            include_once 'vregistro.php';
+        }else if($vista=='SOAP') {
+            include_once 'vWSSOAP.php';
         }
         ?>
-
+    </form>
 </div>
 
     <footer>
         <a class="col-md-2 col-md-offset-1" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=codigo&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=codigo "; } ?>">Código</a>
-        <a class="col-md-2" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>">Repositorio</a>
+        <a class="col-md-2" href="http://daw-usgit.sauces.local/PCB_1718/DWES2/tree/master/Tema7/MiWeb">Repositorio</a>
         <a class="col-md-2" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>">Tecnologías</a>
         <a class="col-md-2" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>">PHPDoc</a>
         <a class="col-md-2" href="../../index.html">Pablo Cidón</a>

@@ -7,7 +7,7 @@
 */
 
 ?>
-<form name="input" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal">
+
     <div class="form-group">
         <label class="control-label col-md-2" for="usuario">Usuario</label>
         <div class="col-md-2">
@@ -29,7 +29,7 @@
             <input type="submit" name="registro" value="Registrate" class="btn btn-primary">
         </div>
     </div>
-</form>
+
     
     <div class="color1 row">
         <h3>Catálogo de Requisitos:</h3>

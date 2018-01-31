@@ -11,9 +11,6 @@
     if(isset($_SESSION['usuario'])){
         header("Location: index.php?pagina=inicio");
     }else{
-        if (isset($_POST['cancelar'])){
-            header("Location: ../../index.html");
-        }
         if(isset($_POST['aceptar'])) {
             $codUsuario = $_POST['usuario'];
             $password = $_POST['password'];
@@ -33,8 +30,7 @@
                 require_once('vista/layout.php');
         }
         if(isset($_POST['registro'])){
-            $vista = "WIP";
-            require_once('vista/layout.php');
+            header("Location: index.php?pagina=registro");
         }
     }
 ?>
