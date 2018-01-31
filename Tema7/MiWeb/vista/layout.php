@@ -48,7 +48,7 @@
 
     <footer>
         <a class="col-md-2 col-md-offset-1" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=codigo&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=codigo "; } ?>">Código</a>
-        <a class="col-md-2" href="http://daw-usgit.sauces.local/PCB_1718/DWES2/tree/master/Tema7/MiWeb">Repositorio</a>
+        <a class="col-md-2" href="https://github.com/pablocidon/DWES2/tree/master/Tema7/MiWeb">Repositorio</a>
         <a class="col-md-2" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>">Tecnologías</a>
         <a class="col-md-2" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>">PHPDoc</a>
         <a class="col-md-2" href="../../index.html">Pablo Cidón</a>

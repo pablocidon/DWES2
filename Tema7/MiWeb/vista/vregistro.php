@@ -9,13 +9,13 @@
 <div class="form-group">
     <label class="control-label col-md-3" for="usuario">Código Usuario</label>
     <div class="col-md-5">
-        <input type="text" class="form-control" placeholder="Código Usuario" name="usuario">
+        <input type="text" class="form-control" placeholder="Código Usuario" name="codUsuario">
     </div>
 </div>
 <div class="form-group">
     <label class="control-label col-md-3" for="usuario">Descripción Usuario</label>
     <div class="col-md-5">
-        <input type="text" class="form-control" placeholder="Descripción Usuario" name="usuario">
+        <input type="text" class="form-control" placeholder="Descripción Usuario" name="descUsuario">
     </div>
 </div>
 <div class="form-group">
