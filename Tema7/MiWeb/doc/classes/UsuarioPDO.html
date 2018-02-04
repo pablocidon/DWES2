@@ -106,12 +106,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">27</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">105</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                            <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1607770196"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1646889745"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1607770196" class="accordion-body collapse in">
+            <div id="namespace-1646889745" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -188,6 +188,8 @@
                                                                     <a href="../classes/UsuarioPDO.html#method_validarUsuario" class="">validarUsuario()</a><br />
                                                                     <a href="../classes/UsuarioPDO.html#method_contadorAccesos" class="">contadorAccesos()</a><br />
                                                                     <a href="../classes/UsuarioPDO.html#method_ultimaConexion" class="">ultimaConexion()</a><br />
+                                                                    <a href="../classes/UsuarioPDO.html#method_crearPerfil" class="">crearPerfil()</a><br />
+                                                                    <a href="../classes/UsuarioPDO.html#method_existeUsuario" class="">existeUsuario()</a><br />
                                                             </section>
                             <section class="span4">
                                                                     <em>No public properties found</em>
@@ -225,7 +227,7 @@
                     
                     <dl>
                         <dt>File</dt>
-                            <dd><a href="../files/UsuarioPDO.html"><div class="path-wrapper">UsuarioPDO.php</div></a></dd>
+                            <dd><a href="../files/modelo.UsuarioPDO.html"><div class="path-wrapper">modelo\UsuarioPDO.php</div></a></dd>
                                                 <dt>Package</dt>
                             <dd><div class="namespace-wrapper">Default</div></dd>
                                                 <dt>Class hierarchy</dt>
@@ -261,28 +263,35 @@
             <article class="method">
                 <h3 class="public ">validarUsuario()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">validarUsuario(string  <span class="argument">$codUsuario</span>, string  <span class="argument">$password</span>) : array</pre>
-                <p><em></em></p>
-                
+                <pre class="signature" style="margin-right: 54px;">validarUsuario(  <span class="argument">$codUsuario</span>,   <span class="argument">$password</span>) : mixed</pre>
+                <p><em>* @function validarUsuario()
+     *
+     * Función de validación de los usuarios.</em></p>
+                <p>*</p>
+<ul>
+<li>@param string $codUsuario Código del usuario a validar.</li>
+<li>@param string $password Contraseña del mismo.</li>
+<li>@return array $arrayUsuario Array que contiene los datos del usuario en caso de que sea válido</li>
+</ul>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td>string</td>
+                                <td></td>
                                 <td>$codUsuario </td>
-                                <td><p>Código del usuario a validar.</p></td>
+                                <td><p>Código del usuario.</p></td>
                             </tr>
                                                     <tr>
-                                <td>string</td>
+                                <td></td>
                                 <td>$password </td>
-                                <td><p>Contraseña del mismo.</p></td>
+                                <td><p>Contraseña del usuario</p></td>
                             </tr>
                                             </table>
                 
                 
                                     <h4>Returns</h4>
-                    array
-                                            &mdash; <p>$arrayUsuario Array que contiene los datos del usuario en caso de que sea válido</p>
+                    mixed
+                                            &mdash; <p>Si el usuario existe o no.</p>
                                     				
                             </article>
         </div>
@@ -293,15 +302,7 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>validarUsuario</p>
-<p>Función de validación de los usuarios.</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -312,24 +313,27 @@
             <article class="method">
                 <h3 class="public ">contadorAccesos()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">contadorAccesos(string  <span class="argument">$codUsuario</span>) : mixed</pre>
-                <p><em></em></p>
-                
+                <pre class="signature" style="margin-right: 54px;">contadorAccesos(  <span class="argument">$codUsuario</span>) </pre>
+                <p><em>* @function contadorAccesos()
+     *
+     * Función para contar los accesos
+     *
+     * @param string $codUsuario Código del usuario que será modificado en la base de datos.</em></p>
+                <ul>
+<li>@return mixed $visitas Cantidad de visitas que ha realizado el usuario.</li>
+</ul>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td>string</td>
+                                <td></td>
                                 <td>$codUsuario </td>
-                                <td><p>Código del usuario que será modificado en la base de datos.</p></td>
+                                <td></td>
                             </tr>
                                             </table>
                 
                 
-                                    <h4>Returns</h4>
-                    mixed
-                                            &mdash; <p>$visitas Cantidad de visitas que ha realizado el usuario.</p>
-                                    				
+                				
                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -339,15 +343,7 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>contadorAccesos</p>
-<p>Función para contar los accesos</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -358,29 +354,35 @@
             <article class="method">
                 <h3 class="public ">ultimaConexion()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">ultimaConexion(string  <span class="argument">$codUsuario</span>, \datetime  <span class="argument">$conexion</span>) : mixed</pre>
-                <p><em></em></p>
-                
+                <pre class="signature" style="margin-right: 54px;">ultimaConexion(  <span class="argument">$codUsuario</span>,   <span class="argument">$conexion</span>) </pre>
+                <p><em>* @function ultimaConexion()
+     *
+     * Función para la última conexion
+     *
+     * @param string $codUsuario Código del usuario del que se modificará el última acceso.</em></p>
+                <ul>
+<li>@param datetime $conexion Fecha nueva de la última conexión.
+<ul>
+<li>@return mixed $ultimoAcceso Última vez que el usuario ha accedido.</li>
+</ul></li>
+</ul>
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td>string</td>
+                                <td></td>
                                 <td>$codUsuario </td>
-                                <td><p>Código del usuario del que se modificará el última acceso.</p></td>
+                                <td></td>
                             </tr>
                                                     <tr>
-                                <td>\datetime</td>
+                                <td></td>
                                 <td>$conexion </td>
-                                <td><p>Fecha nueva de la última conexión.</p></td>
+                                <td></td>
                             </tr>
                                             </table>
                 
                 
-                                    <h4>Returns</h4>
-                    mixed
-                                            &mdash; <p>$ultimoAcceso Última vez que el usuario ha accedido.</p>
-                                    				
+                				
                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -390,15 +392,102 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr>
-                        <th>
-                            function
-                        </th>
-                        <td>
-                                                                                            <p>ultimaConexion</p>
-<p>Función para la última conexion</p>
-                                                    </td>
-                    </tr>
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_crearPerfil" name="method_crearPerfil" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">crearPerfil()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">crearPerfil(  <span class="argument">$codUsuario</span>,   <span class="argument">$descUsuario</span>,   <span class="argument">$password</span>) </pre>
+                <p><em>* @function crearPerfil()
+     *
+     * Función para registrarse
+     *
+     * @param string $codUsuario Código del nuevo usuario.</em></p>
+                <ul>
+<li>@param string $descUsuario Descripción del nuevo usuario.
+<ul>
+<li>@param string $password Contraseña del nuevo usuario.</li>
+</ul></li>
+</ul>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$codUsuario </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$descUsuario </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$password </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_existeUsuario" name="method_existeUsuario" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">existeUsuario()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">existeUsuario(  <span class="argument">$codUsuario</span>) </pre>
+                <p><em>* @function existeUsuario()
+     *
+     * Función para comprobar si ya existe otro usuario con el mismo código.</em></p>
+                <p>*</p>
+<ul>
+<li>@param $codUsuario Código del usuario a comprobar.</li>
+<li>@return bool $existe En caso de que ese código ya exista, devolverá true, de lo contrario devolverá false</li>
+</ul>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$codUsuario </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
                             </table>
         </aside>
     </div>
@@ -412,7 +501,7 @@
             <h3 id="source-view-label">UsuarioPDO.php</h3>
         </div>
         <div class="modal-body">
-            <pre data-src="../files/UsuarioPDO.php.txt" class="language-php line-numbers"></pre>
+            <pre data-src="../files/modelo\UsuarioPDO.php.txt" class="language-php line-numbers"></pre>
         </div>
     </div>
 
@@ -452,7 +541,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on January 23rd, 2018 at 15:29.
+                    on February 4th, 2018 at 16:15.
                 </section>
             </section>
         </section>
