@@ -15,9 +15,9 @@ $mensajeError=Array(
     'distinto'=>''
 );
 
-if(isset($_POST['aceptar'])){
+if(isset($_POST['registro'])){
     if($mensajeError['codUsuario'] = comprobarAlfaNumerico($_POST['codUsuario'],10,3,1) == null){
-        $comprobacion = Usuario::consultaPerfil($_POST['codUsuario']);
+        $comprobacion = Usuario::existeUsuario($_POST['codUsuario']);
         $resultado = $comprobacion->fetchColumn(0);
         if ($resultado) {//En caso de exista mostraremos un mensaje de error.
             $mensajeError['codUsuario'] = "Este código ya existe";
@@ -36,6 +36,11 @@ if(isset($_POST['aceptar'])){
         if ($valor != null) {
             $correcto = false;
         }
+    }
+    if($correcto){
+        $nuevoUsuario = Usuario::crearPerfil($_POST['codUsuario'],$_POST['descUsuario'],hash('sha256', $_POST['password']));
+        $_SESSION['usuario']=$nuevoUsuario;
+        header('Location: index.php?pagina=inicio');
     }
 }
 if(isset($_POST['cancelar'])){

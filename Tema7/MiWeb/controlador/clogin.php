@@ -8,6 +8,8 @@
     $vista = "login";
     $correcto = false;
     $error='';
+    date_default_timezone_set('Europe/Madrid');
+    $conexion = date_default_timezone_get();
     if(isset($_SESSION['usuario'])){
         header("Location: index.php?pagina=inicio");
     }else{
@@ -25,6 +27,8 @@
             if ($correcto) {
                 $_SESSION['usuario'] = $usuario;
                 $_SESSION['password'] = hash('sha256', $password);
+                Usuario::contadorAccesos($_SESSION['usuario']);
+                Usuario::ultimaConexion($_SESSION['usuario'],$conexion);
                 header("Location: index.php?pagina=inicio");
             } else {
                 require_once('vista/layout.php');
