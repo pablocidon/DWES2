@@ -21,8 +21,11 @@
         </ul>
         <input type="submit" name="salir" value="Cerrar Sesión" class="btn btn-danger navbar-btn">
         <div class="color1 row">
-            <?php echo "<h1>Bienvenido </h1><br>";
-            print_r($_SESSION);
+            <?php
+                echo "<h1>Bienvenido ",$_SESSION['usuario']->getCodUsuario(),"</h1><br>";
+                echo "<h1>Tiene permisos de ",$_SESSION['usuario']->getPerfil(),"</h1><br>";
+                echo "<h1>Número de conexiones ",$_SESSION['usuario']->getContadorAccesos(),"</h1><br>";
+                echo "<h1>Ultima conexión ",$_SESSION['usuario']->getUltimaConexion(),"</h1><br>";
             ?>
         </div>
     </div>

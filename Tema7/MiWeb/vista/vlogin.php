@@ -7,6 +7,12 @@
 */
 
 ?>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="webroot/css/bootstrap.min.css">
+    <link rel="stylesheet" href="webroot/css/estilos.css">
+</head>
 
     <div class="form-group">
         <label class="control-label col-md-2" for="usuario">Usuario</label>
@@ -30,34 +36,57 @@
         </div>
     </div>
 
-    
-    <div class="color1 row">
-        <h3>Catálogo de Requisitos:</h3>
-    </div>
+    <div class="color1">
+        <div class="container">
+            <br>
+            <div class="col-md-12">
+                <div id="carousel-1" class="carousel slide" data-ride="carousel">
+                    <!--Indicadores-->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-1" data-slide-to="0" class="active"  style="background-color: black"></li>
+                        <li data-target="#carousel-1" data-slide-to="1"  style="background-color: black"></li>
+                        <li data-target="#carousel-1" data-slide-to="2"  style="background-color: black"></li>
+                    </ol>
 
-    <div class="color1 row">
-        <h3>Diagrama de Casos de Uso:</h3>
-    </div>
+                    <!--Contenedor slide -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="documentacion/almacenamiento.JPG" class="img-responsive" alt="">
+                            <div class="carousel-caption">
+                                <p style="color: black">Árbol de Almacenamiento</p>
+                            </div>
+                        </div>
 
-    <div class="color1 row">
-        <h3>Diagrama de Clases:</h3>
-        <img src="documentacion/diagramaClases.JPG" alt="Diagrama de Clases" style="width: 60%">
-    </div>
+                        <div class="item">
+                            <img src="documentacion/diagramaClases.JPG" class="img-responsive" alt="">
+                            <div class="carousel-caption">
+                                <p style="color: black">Diagrama de Clases</p>
+                            </div>
+                        </div>
 
-    <div class="color1 row">
-        <h3>Árbol de Navegación:</h3>
-        <img src="documentacion/navegacion.JPG" alt="Árbol de Navegación">
-    </div>
+                        <div class="item">
+                            <img src="documentacion/navegacion.JPG" class="img-responsive" alt="">
+                            <div class="carousel-caption">
+                                <p style="color: black">Árbol de Navegación</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#carousel-1" class="left carousel-control" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                    <a href="#carousel-1" class="right carousel-control" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Siguiente</span>
+                    </a>
+                </div>
 
-    <div class="color1 row">
-        <h3>Modelo Físico de Datos:</h3>
+            </div>
+        </div>
     </div>
-
-    <div class="color1 row">
-        <h3>Árbol de Almacenamiento:</h3>
-        <img src="documentacion/almacenamiento.JPG" alt="Árbol de Almacenamiento">
-    </div>
-
+<br><br>
+<script src="webroot/js/jquery.js"></script>
+<script src="webroot/js/bootstrap.min.js"></script>
 
 
 
