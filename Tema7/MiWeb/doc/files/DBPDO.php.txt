@@ -1,15 +1,25 @@
 <?php
-/*
-* Autor: Pablo Cidón.
-* Creado: 12-01-2018.
-* Archivo: DBPDO.php
-* Modificado: 12-01-2018.
-*/
+/**
+ * Class DBPDO
+ *
+ * Clase para la conexión a la base de datos
+ *
+ * @author Pablo Cidón Barrio.
+ * @source: DBPDO.php
+ * @since 12-01-2018.
+ */
 
-include_once "../config/conexionDB.php";//Incluimos el fichero de configuración para conectarse a la base de datos.
+class DBPDO{
 
-class DBPDO{ //Creamos la clase para la conexión a la base de datos.
-
+    /**
+     * @function ejecutaConsulta
+     *
+     * La función recibe como parámetros la consulta sql y los parámetros de la misma.
+     *
+     * @param string $consultaSQL parámetro que contiene la consulta a realizar.
+     * @param array $parametros array que contendrá los parámetros que va a recibir la consulta.
+     * @return null|PDOStatement Resultado que devolverá la consulta.
+     */
     public static function ejecutaConsulta($consultaSQL,$parametros){//Función que nos servirá para la ejecución de las consultas
         try{//Establecemos la conexión a la base de datos
             $miDB = new PDO(DATOSCONEXION, USER,PASSWORD);

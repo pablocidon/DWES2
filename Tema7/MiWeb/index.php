@@ -13,10 +13,9 @@ session_start();
 if(isset($_SESSION['usuario'])&& !isset($_GET['pagina'])){
     include_once $controladores['inicio'];
 }
-    if(isset($_GET['pagina'])){
-        include_once $controladores[$_GET['pagina']];
-    }else{
-        include_once $controladores['login'];
-    }
-
+if(isset($_GET['pagina'])){
+    include_once $controladores[$_GET['pagina']];
+}else{
+    include_once $controladores['login'];
+}
 ?>

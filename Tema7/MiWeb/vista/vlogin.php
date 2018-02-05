@@ -32,7 +32,7 @@
     <div class="form-group">
         <div class="col-md-2 col-md-offset-2">
             <input type="submit" value="Entrar" name="aceptar" class="btn btn-success">
-            <input type="submit" name="registro" value="Registrate" class="btn btn-primary">
+            <input type="submit" value="Registrate" name="registrar" class="btn btn-primary">
         </div>
     </div>
 

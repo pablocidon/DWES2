@@ -10,9 +10,13 @@
  */
 interface UsuarioDB{
     /**
-     * @param $codUsuario
-     * @param $password
-     * @return mixed
+     * @function validarUsuario()
+     *
+     * Función para la validación de los usuarios al iniciar sesión.
+     *
+     * @param $codUsuario Código del usuario.
+     * @param $password Contraseña del usuario
+     * @return mixed Si el usuario existe o no.
      */
     public static function validarUsuario($codUsuario,$password);
 }
