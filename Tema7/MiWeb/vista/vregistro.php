@@ -9,7 +9,7 @@
 <div class="form-group">
     <label class="control-label col-md-3" for="usuario">Código Usuario</label>
     <div class="col-md-5">
-        <input type="text" class="form-control" placeholder="Código Usuario" name="codUsuario">
+        <input type="text" class="form-control" placeholder="Código Usuario" name="codUsuario"  <?php if(isset($_POST['codUsuario']) && empty($mensajeError['codUsuario'])){ echo 'value="',$_POST['codUsuario'],'"';}?>>
     </div>
     <div class="col-md-offset-2">
         <?php echo "<span class='text-warming'>".$mensajeError['codUsuario']."</span>";?>
@@ -18,7 +18,7 @@
 <div class="form-group">
     <label class="control-label col-md-3" for="usuario">Descripción Usuario</label>
     <div class="col-md-5">
-        <input type="text" class="form-control" placeholder="Descripción Usuario" name="descUsuario">
+        <input type="text" class="form-control" placeholder="Descripción Usuario" name="descUsuario"  <?php if(isset($_POST['descUsuario']) && empty($mensajeError['descUsuario'])){ echo 'value="',$_POST['descUsuario'],'"';}?>>
     </div>
     <div class="col-md-offset-2">
         <?php echo "<span class='text-warming'>".$mensajeError['descUsuario']."</span>";?>
@@ -27,7 +27,7 @@
 <div class="form-group">
     <label class="control-label col-md-3" for="password">Contraseña</label>
     <div class="col-md-5">
-        <input type="password" class="form-control" placeholder="Contraseña" name="password">
+        <input type="password" class="form-control" placeholder="Contraseña" name="password" <?php if(isset($_POST['password']) && empty($mensajeError['password'])){ echo 'value="',$_POST['password'],'"';}?>>
     </div>
     <div class="col-md-offset-2">
         <?php echo "<span class='text-warming'>".$mensajeError['password']."</span>";?>
@@ -36,15 +36,14 @@
 <div class="form-group">
     <label class="control-label col-md-3" for="password">Repita Contraseña</label>
     <div class="col-md-5">
-        <input type="password" class="form-control" placeholder="Contraseña" name="password2">
+        <input type="password" class="form-control" placeholder="Contraseña" name="password2" <?php if(isset($_POST['password2']) && empty($mensajeError['password2'])){ echo 'value="',$_POST['password2'],'"';}?>>
     </div>
     <div class="col-md-offset-2">
         <?php echo "<span class='text-warming'>".$mensajeError['password2']."</span>";?>
+        <?php echo "<span class='text-warming'>".$mensajeError['distinto']."</span>";?>
     </div>
 </div>
-<div class="col-md-offset-2">
-    <?php echo "<span class='text-warming'>".$mensajeError['distinto']."</span>";?>
-</div>
+
 <div class="form-group">
     <div class="col-md-5 col-md-offset-4">
         <input type="submit" value="Aceptar" name="registro" class="btn btn-success">
