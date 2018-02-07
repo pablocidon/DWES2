@@ -6,7 +6,8 @@
  *
  * @author Pablo Cidón Barrio.
  * @source: UsuarioDB.php
- * @since 12-01-2018.
+ * @since Versión 1.0.
+ * @copyright 07-02-2018.
  */
 interface UsuarioDB{
     /**

@@ -14,7 +14,11 @@ $mensajeError=Array(
     'password2'=>'',
     'distinto'=>''
 );
-
+if(isset($_POST['cancelar'])){
+    header('Location: index.php?pagina=login');
+}else{
+    require_once 'vista/layout.php';
+}
 if(isset($_POST['registro'])){
     if($mensajeError['codUsuario'] = comprobarAlfaNumerico($_POST['codUsuario'],10,3,1) == null){
         $comprobacion = Usuario::existeUsuario($_POST['codUsuario']);
@@ -25,28 +29,29 @@ if(isset($_POST['registro'])){
         }
     }
     $mensajeError['descUsuario'] = comprobarTexto($_POST['descUsuario'],100,1,1);
-    if($mensajeError['password'] = comprobarAlfaNumerico($_POST['password'],100,2,1) == null && $mensajeError['password2'] = comprobarAlfaNumerico($_POST['password2'],100,2,1) == null){
-        if($_POST['password']===$_POST['password2']){
-            $correcto = true;
-        }else{
-            $mensajeError['distinto'] = 'Las contraseñas no coinciden';
-        }
+    $mensajeError['password'] = comprobarAlfaNumerico($_POST['password'],100,2,1);
+    $mensajeError['password2'] = comprobarAlfaNumerico($_POST['password2'],100,2,1);
+
+    if($_POST['password']!=$_POST['password2']) {
+        $mensajeError['distinto']="Las contraseñas no coinciden";
     }
-    foreach ($errores as $valor) {  //recorremos el array de errores
+
+    foreach ($mensajeError as $valor) {  //recorremos el array de errores
         if ($valor != null) {
             $correcto = false;
         }
     }
-    if($correcto){
-        $nuevoUsuario = Usuario::crearPerfil($_POST['codUsuario'],$_POST['descUsuario'],hash('sha256', $_POST['password']));
+}
+if(isset($_POST['registro'])&&$correcto){
+    $codUsuario = $_POST['codUsuario'];
+    $descUsuario = $_POST['descUsuario'];
+    $password = hash(sha2($_POST['password']),256);
+    $nuevoUsuario = Usuario::crearPerfil($codUsuario,$descUsuario,$password);
+    if(is_null($nuevoUsuario)){
+        header('Location: index.php');
+    }else{
         $_SESSION['usuario']=$nuevoUsuario;
         header('Location: index.php?pagina=inicio');
     }
 }
-if(isset($_POST['cancelar'])){
-    header('Location: index.php?pagina=login');
-}else{
-    require_once 'vista/layout.php';
-}
-
 ?>

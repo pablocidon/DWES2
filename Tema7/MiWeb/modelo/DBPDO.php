@@ -4,9 +4,13 @@
  *
  * Clase para la conexión a la base de datos
  *
- * @author Pablo Cidón Barrio.
- * @source: DBPDO.php
- * @since 12-01-2018.
+ * PHP version 7.0
+ *
+ * @category DBPDO
+ * @package  OperacionesDB
+ * @source DBPDO.php
+ * @since Versión 1.0
+ * @copyright 07-02-2018
  */
 
 class DBPDO{
