@@ -67,7 +67,7 @@
                         <div class="item">
                             <h3 class="text-center">Catálogo de Requisitos</h3>
                             <div class="carousel-caption"></div>
-                            <img src="../../construccion.gif" class="img-responsive" alt="" style="width: 100%">
+                            <img src="documentacion/catalogoRequisitos.JPG" class="img-responsive" alt="" style="width: 100%">
                         </div>
 
                         <div class="item">
