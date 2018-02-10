@@ -31,7 +31,7 @@
     </div>
 
     <div class="color1">
-        <div class="container">
+        <div class="container"  style="width: 100%">
             <br>
             <div class="col-md-12">
                 <div id="carousel-1" class="carousel slide" data-ride="carousel">
@@ -79,7 +79,7 @@
                         <div class="item">
                             <h3 class="text-center">Modelo físico de datos</h3>
                             <div class="carousel-caption"></div>
-                            <img src="../../construccion.gif" class="img-responsive" alt="" style="width: 100%">
+                            <img src="documentacion/modeloDatos.JPG" class="img-responsive" alt="" style="width: 100%">
                         </div>
                     </div>
                     <a href="#carousel-1" class="left carousel-control" role="button" data-slide="prev">
