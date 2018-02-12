@@ -3,7 +3,7 @@
     * Autor: Pablo Cidón.
     * Creado: 12-01-2018.
     * Archivo: layout.php
-    * Modificado: 24-01-2018.
+    * Modificado: 11-02-2018.
 */
 
 ?>
@@ -25,7 +25,7 @@
     </div>
 </header>
 <div class="container">
-    <br><br>
+    <br>
     <form name="input" action="<?PHP echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal">
         <?php
         if ($vista=="login"){
@@ -40,6 +40,10 @@
             include_once 'vregistro.php';
         }else if($vista=='SOAP') {
             include_once 'vWSSOAP.php';
+        }else if($vista=='editarPerfil') {
+            include_once 'veditarPerfil.php';
+        }else if($vista=='tecnologias') {
+            include_once 'vtecnologias.php';
         }
         ?>
     </form>
@@ -48,7 +52,7 @@
     <footer>
         <a class="col-md-2" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=codigo&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=codigo "; } ?>">Código</a>
         <a class="col-md-2" href="http://daw-usgit.sauces.local/PCB_1718/DWES2/tree/master/Tema7" target="_blank">Repositorio</a>
-        <a class="col-md-2" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>">Tecnologías</a>
+        <a class="col-md-2" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=tecnologias&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=tecnologias "; } ?>">Tecnologías</a>
         <a class="col-md-2" href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>">RSS</a>
         <a class="col-md-2" href="doc/index.html" target="_blank">PHPDoc</a>
         <a class="col-md-2" href="../../index.html">Pablo Cidón</a>
