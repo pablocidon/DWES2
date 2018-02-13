@@ -44,6 +44,8 @@
             include_once 'veditarPerfil.php';
         }else if($vista=='tecnologias') {
             include_once 'vtecnologias.php';
+        }else if($vista=='eliminarPerfil'){
+            include_once 'veliminarPerfil.php';
         }
         ?>
     </form>

@@ -3,7 +3,7 @@
     * Autor: Pablo Cidón.
     * Creado: 11-02-2018.
     * Archivo: ceditarPerfil.php
-    * Modificado: 11-02-2018.
+    * Modificado: 13-02-2018.
 */
 $vista='editarPerfil';
 $correcto = false;
@@ -12,9 +12,12 @@ $mensajeError=Array(
     'password'=>''
 );
 if(isset($_POST['cancelar'])){
-    header('Location: index.php?pagina=login');
+    header('Location: index.php?pagina=inicio');
 }else{
     require_once 'vista/layout.php';
+}
+if(isset($_POST['eliminarCuenta'])){
+    header('Location: index.php?pagina=eliminarPerfil');
 }
 if(isset($_POST['editarPerfil'])){
 
@@ -27,7 +30,8 @@ if(isset($_POST['editarPerfil'])){
         }
     }
 }
-if(isset($_POST['editarPerfil'])&&$correcto){
 
+if(isset($_POST['editarPerfil']) && $correcto){
+    Usuario::editarPerfil($_POST['descUsuario'],$_POST['password'],$_POST['codUsuario']);
 }
 ?>
