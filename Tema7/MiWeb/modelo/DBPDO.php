@@ -16,10 +16,11 @@
 class DBPDO{
 
     /**
-     * @function ejecutaConsulta
+     * Funcion para realizar consultas.
      *
      * La función recibe como parámetros la consulta sql y los parámetros de la misma.
      *
+     * @function ejecutaConsulta()
      * @param string $consultaSQL parámetro que contiene la consulta a realizar.
      * @param array $parametros array que contendrá los parámetros que va a recibir la consulta.
      * @return null|PDOStatement Resultado que devolverá la consulta.

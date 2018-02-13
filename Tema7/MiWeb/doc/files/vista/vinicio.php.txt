@@ -3,7 +3,7 @@
     * Autor: Pablo Cidón.
     * Creado: 12-01-2018.
     * Archivo: vinicio.php
-    * Modificado: 19-01-2018.
+    * Modificado: 11-02-2018.
 */
 ?>
 <nav class="navbar navbar-inverse">
@@ -13,7 +13,7 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="#"><span class="glyphicon glyphicon-home"> Inicio</span></a></li>
-            <li><a href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>"><span class="glyphicon glyphicon-user"> Perfil</span></a></li>
+            <li><a href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=editarPerfil&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=editarPerfil "; } ?>"><span class="glyphicon glyphicon-user"> Perfil</span></a></li>
             <li><a href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>"><span class="glyphicon glyphicon-list"> Mto. Departamentos</span></a></li>
             <li><a href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=SOAP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=SOAP "; } ?>"><span class="glyphicon glyphicon-cloud-download"> WS SOAP</span></a></li>
             <li><a href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>"><span class="glyphicon glyphicon-cloud-download"> WS REST</span></a></li>

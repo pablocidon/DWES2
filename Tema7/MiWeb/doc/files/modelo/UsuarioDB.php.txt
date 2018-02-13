@@ -4,6 +4,10 @@
  *
  * Interfaz de objeto usuario
  *
+ * PHP version 7.0
+ *
+ * @category UsuarioDB
+ * @package  OperacionesUsuario.
  * @author Pablo Cidón Barrio.
  * @source: UsuarioDB.php
  * @since Versión 1.0.

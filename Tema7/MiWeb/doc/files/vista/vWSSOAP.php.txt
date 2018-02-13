@@ -19,7 +19,6 @@
             <li><a href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>"><span class="glyphicon glyphicon-cloud-download"> WS REST</span></a></li>
             <li><a href="<?php if (isset($_GET['pagina']) && $_GET['pagina']!="inicio" && $_GET['pagina']!="login"){ echo "index.php?pagina=WIP&paginaAnterior=".$_GET['pagina']; }else { echo " index.php?pagina=WIP "; } ?>"><span class="glyphicon glyphicon-list-alt"> Encuesta</span></a></li>
         </ul>
-        <input type="submit" name="volver" id="volver" value="Volver" class="btn btn-default">
         <input type="submit" name="salir" value="Cerrar Sesión" class="btn btn-danger navbar-btn">
         <div class="color1 row">
             <h1>WS SOAP</h1>
